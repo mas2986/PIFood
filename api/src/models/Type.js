@@ -3,7 +3,16 @@ const {DataTypes} = require('sequelize');
 module.exports = (sequelize)=>{
     sequelize.define('Type',{      
         name:{
-            type:DataTypes.STRING(50),            
+            type:DataTypes.ENUM('gluten free',
+            'dairy free',
+            'lacto ovo vegetarian',
+            'vegan',            
+            'paleolithic',
+            'primal',
+            'whole 30',
+            'pescatarian',
+            'ketogenic',
+            'fodmap friendly')           
         }
     },
     {

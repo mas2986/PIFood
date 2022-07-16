@@ -1,10 +1,15 @@
 require('dotenv').config();
 const { Router } = require('express');
+const axios = require('axios');
 const {Recipe, Type} = require('../db.js');
 // Importar todos los routers;
 // Ejemplo: const authRouter = require('./auth.js');
-const URL = 'https://api.spoonacular.com/recipes/complexSearch?addRecipeInformation=true'
+const URL = 'https://api.spoonacular.com/recipes'
+const flag = '/complexSearch?addRecipeInformation=true';
 const {apiKey} = process.env;
+//apiKey = 1bd36b11dedd4b2eaeb261378b86aa5f para el ENV
+
+
 
 const router = Router();
 //https://api.spoonacular.com/recipes/complexSearch?apiKey=1bd36b11dedd4b2eaeb261378b86aa5f
@@ -12,41 +17,77 @@ const router = Router();
 // Ejemplo: router.use('/auth', authRouter);
 
 const getRecipeApi = async () =>{
-    let recipeApi = await axios.get(`${URL}&apiKey=${apiKey}&number=100`);
-    recipeApi = await recipe.data.results;    
-    recipeApi.map(recipe=>{
+    let recipeApi = await axios.get(`${URL}${flag}&apiKey=${apiKey}&number=100`);
+    recipeApi = await recipeApi.data.results;    
+    recipeApi = recipeApi.map(recipe=>{
         return{
             id:recipe.id,
             title:recipe.title,
-            summary:recipe.summary,
-            healthScore:recipe.healthScore,
-            weightWatcherSmartPoints:recipe.weightWatcherSmartPoints,
+            //summary:recipe.summary,
+            //healthScore:recipe.healthScore,
+            //weightWatcherSmartPoints:recipe.weightWatcherSmartPoints,
             image: recipe.image,
             dishTypes: recipe.dishTypes,
             diets: recipe.diets,
-            steps: recipe.analyzedInstructions[0].steps
+            //steps: recipe.analyzedInstructions[0]?.steps
         }
     })
+    return recipeApi;
 }
 
 const getRecipeDb = async ()=>{
     let recipeDb = await Recipe.findAll({
         include:{
             model:Type,
-            atributtes:['name'],
+            attributes:['name'],
             through:{
-                atributtes:[]
+                attributes:[]
             }
-        }
+        }                
     });
     recipeDb = recipeDb.map(e=>e.toJSON());
     return recipeDb;
 }
 
 const getAllRecipe = async()=>{
-    let recipeApi = getRecipeApi();
-    let recipeDb = getRecipeDb();
+    let recipeApi = await getRecipeApi();
+    let recipeDb = await getRecipeDb();
     return recipeApi.concat(recipeDb);
+}
+
+const getRecipeApiId = async(id)=>{
+    try{
+        let recipeId = await axios.get(`${URL}/${id}/information?apiKey=${apiKey}`)
+        recipeId = recipeId.data;
+        if (recipeId){
+            return{
+                  id:recipeId.id,
+                  title:recipeId.title,
+                  summary:recipeId.summary,
+                  healthScore:recipeId.healthScore,
+                  image: recipeId.image,
+                  dishTypes: recipeId.dishTypes,
+                  diets: recipeId.diets,
+                  steps: recipeId.analyzedInstructions[0]?.steps.map(e=>e.step)
+            }
+        }        
+    }
+    catch(e){return null}
+}
+
+const getRecipeDbId = async (id)=>{
+    try{
+        let recipeId = await Recipe.findByPk(id,{
+            include:{
+                model:Type,
+                attributes:['name'],
+                through:{
+                    attributes:[]
+                }
+            }
+        })
+    }
+    catch(e){return null}
 }
 
 router.get('/recipes',async (req,res,next)=>{
@@ -55,7 +96,7 @@ router.get('/recipes',async (req,res,next)=>{
     try{
         let allRecipe = await getAllRecipe();
         if(!title) return res.status(200).json(allRecipe);
-        let recipeTitle = allRecipe.filter(e=>e.title.toUpperCase.includes(title.toUpperCase));
+        let recipeTitle = allRecipe.filter(e=>e.title.toUpperCase().includes(title.toUpperCase()));
         if(recipeTitle) res.status(200).json(recipeTitle);
     }
     catch(e){next(e)}
@@ -65,9 +106,13 @@ router.get('/recipes/:id',async (req,res,next)=>{
     //buscar recetas por id
     let {id} = req.params;
     try{
-        let allRecipe = await getAllRecipe();
-        if(id) let recipeId = allRecipe.filter(e=>e.id==id);
-        if(recipeId) return res.status(200).json(recipeId);
+        //Implementar con Promise.all ambas promesas
+        let recipeApi = await getRecipeApiId(id);
+        let recipeDb = await getRecipeDbId(id); 
+        let recipeId = recipeDb || recipeApi;
+        recipeId?
+        res.status(200).json(recipeId):
+        res.status(404).send('Tu búsqueda no produjo resultados');        
     }
     catch(e){next(e)}
 })
