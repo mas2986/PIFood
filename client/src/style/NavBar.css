@@ -1,0 +1,79 @@
+.container{
+    display:flex;
+    justify-content: space-around;
+    list-style: none; 
+    margin:-60px auto;
+    padding:20px;   
+    background: black;
+}
+
+.text{
+    text-decoration: none;
+    color: white
+}
+
+nav div .btnSubmit{
+  background:#DD4124;
+    color:#FFF;
+    cursor:pointer;
+    border:none;
+/*     transform:translate(-50%,-105%);
+    z-index:7;
+ */    border-radius:15px;
+    padding:10px 15px;
+    border: none;
+    border-radius: 7px;
+    font-size: 0.8em;
+    font-weight: 700;
+    letter-spacing: 1.3px;
+    margin-left: 2px;
+    box-shadow: 2px 2px 25px -7px #4c4c4c;
+    cursor: pointer;
+}
+
+nav div .btnSubmit:hover{
+  background:#FFF;
+  color:#DD4124;
+}
+
+/* nav {
+    float: left;
+    font-family: "Oswald"; 
+  margin: 1em 20%;
+  background-color: #fafafa;
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  border-bottom: 1px solid #e3e3e8;
+  }
+  nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 2.2em 2em;
+  }
+  nav ul li {
+    display: inline;
+    padding: 0 .4em;
+  }
+  nav ul li a {
+    color: #333;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-size: 1.6em;
+    padding-bottom: 1.3em;
+    transition: .5s color;
+  }
+  nav ul li a:hover {
+    border-bottom: 3px solid #333;
+  }
+  #current {
+    color: #ff4629;
+    border-bottom: 3px solid #333;
+  }
+  #fb:hover {
+    color: #3b5998;
+  }
+  #twitter:hover {
+    color: #00acee;
+  } */

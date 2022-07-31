@@ -1,13 +1,14 @@
 require('dotenv').config();
 const { Router } = require('express');
 const axios = require('axios');
-const {Recipe, Type} = require('../db.js');
+const {Recipe, Diet} = require('../db.js');
 // Importar todos los routers;
 // Ejemplo: const authRouter = require('./auth.js');
 const URL = 'https://api.spoonacular.com/recipes'
 const flag = '/complexSearch?addRecipeInformation=true';
 const {apiKey} = process.env;
-//apiKey = 1bd36b11dedd4b2eaeb261378b86aa5f para el ENV
+//apiKey = 5bfe94162e3d4dfcbcc9a43e61f54f17 para el ENV
+//apiKey = 1bd36b11dedd4b2eaeb261378b86aa5f
 
 
 
@@ -24,10 +25,10 @@ const getRecipeApi = async () =>{
             id:recipe.id,
             title:recipe.title,
             //summary:recipe.summary,
-            //healthScore:recipe.healthScore,
+            healthScore:recipe.healthScore,
             //weightWatcherSmartPoints:recipe.weightWatcherSmartPoints,
             image: recipe.image,
-            dishTypes: recipe.dishTypes,
+            //dishTypes: recipe.dishTypes,
             diets: recipe.diets,
             //steps: recipe.analyzedInstructions[0]?.steps
         }
@@ -38,7 +39,7 @@ const getRecipeApi = async () =>{
 const getRecipeDb = async ()=>{
     let recipeDb = await Recipe.findAll({
         include:{
-            model:Type,
+            model:Diet,
             attributes:['name'],
             through:{
                 attributes:[]
@@ -46,6 +47,9 @@ const getRecipeDb = async ()=>{
         }                
     });
     recipeDb = recipeDb.map(e=>e.toJSON());
+    recipeDb.map(el=>{
+       el.diets = el.diets.map(e=>e.name);
+    }) 
     return recipeDb;
 }
 
@@ -77,15 +81,20 @@ const getRecipeApiId = async(id)=>{
 
 const getRecipeDbId = async (id)=>{
     try{
+        console.log('DBid',id);
         let recipeId = await Recipe.findByPk(id,{
             include:{
-                model:Type,
+                model:Diet,
                 attributes:['name'],
                 through:{
                     attributes:[]
                 }
             }
-        })
+        })        
+        recipeId = recipeId.toJSON();
+        recipeId.diets = recipeId.diets.map(el=>el.name);
+        console.log('recipeId',recipeId)
+        return recipeId;
     }
     catch(e){return null}
 }
@@ -108,35 +117,50 @@ router.get('/recipes/:id',async (req,res,next)=>{
     try{
         //Implementar con Promise.all ambas promesas
         let recipeApi = await getRecipeApiId(id);
-        let recipeDb = await getRecipeDbId(id); 
+        let recipeDb = await getRecipeDbId(id);                 
         let recipeId = recipeDb || recipeApi;
         recipeId?
         res.status(200).json(recipeId):
-        res.status(404).send('Tu búsqueda no produjo resultados');        
+        res.status(404).send(new Error('Tu búsqueda no produjo resultados'));        
     }
     catch(e){next(e)}
 })
 
-router.get('/types',async (req,res,next)=>{
+router.get('/diets',async (req,res,next)=>{
     try{
         let allRecipe = await getAllRecipe();
         let diets = allRecipe.map(e=>e.diets).flat();
         let setDiets = new Set(diets);
         diets = [...setDiets];
         diets = diets.filter(Boolean);
-        let promises = diets.map(e=>Type.findOrCreate({
+        let promises = diets.map(e=>Diet.findOrCreate({
             where:{
                 name:e
             }
         }))
         await Promise.all(promises);
-        return res.status(201).json(diets);
+        return res.status(200).json(diets);
     }
     catch(e){next(e)}
 })
 
-router.post('/recipe',async (req,res)=>{
-    
+router.post('/recipe',async (req,res,next)=>{
+    let {title,diets,summary} = req.body;
+    if(!title||!diets||!summary) return res.status(404).send('Faltan datos obligatorios');
+    try{
+        let promises = diets.map(el=>Diet.findOne({where:{name:el}}));
+        let idDiets = await Promise.all(promises)
+        let recipe = await Recipe.create(req.body);    
+        if(recipe) {
+            await recipe.addDiets(idDiets);
+            //let diet = await Diet.findByPk(idDiets)
+            recipe.dataValues.diets = diets//
+            console.log('recipe',recipe);
+            //console.log('diet',diet)
+        }
+        return res.status(201).json(recipe);
+    }    
+    catch(e){next(e)}
 })
 
 module.exports = router;

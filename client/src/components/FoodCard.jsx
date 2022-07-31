@@ -2,7 +2,7 @@ import React from 'react';
 import {Link} from 'react-router-dom';
 import s from '../style/FoodCard.module.css'
 
-export default function FoodCard({id,title,image,dishTypes, diets}){
+export default function FoodCard({id,title,image, diets}){
     return(
         <div className={s.foodCard}>
         <div className={s.foodCardImage}>
@@ -11,11 +11,11 @@ export default function FoodCard({id,title,image,dishTypes, diets}){
         <div className={s.foodCardContent}>
           <div className={s.foodCardFoodName}><h3>{title}</h3></div>
           <div className={s.foodCardArtistName}><h5>ID <a>{id}</a></h5></div>
-          <div className={s.foodCardAbout}>{dishTypes}
-            <div className={s.aboutShadow}>
-            </div>
+          <div className={s.foodCardAbout}>
+            <h4>DIETS</h4>
+            {diets&&diets.map(el=><p key={el}>{el}</p>)}          
           </div>          
-              <Link to = {`/detalle/${id}`}>
+              <Link to = {`/detail/${id}`}>
                 <button className={s.detailBtn}>VER DETALLE</button>
               </Link>
           

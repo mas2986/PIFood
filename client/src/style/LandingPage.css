@@ -1,0 +1,29 @@
+.landingPage{
+    position:relative;
+    top:250px;
+    text-align: center;
+    font-family: 'Oswald'
+}
+
+.landingPage button{
+    background:#DD4124;
+    color:#FFF;
+    cursor:pointer;
+    border:none;
+  font-family: 'Oswald';
+    font-size:16px;
+    text-align:center;
+    padding-left:10px;
+    padding-right:10px;
+    border-radius: 1.5rem;
+    height: 50px;
+    width: 150px;
+    margin:5px;
+    box-shadow: 0 3px 6px rgba(0,0,0,0.5), 0 3px 6px rgba(0,0,0,0.5);
+     text-decoration: none;
+}
+
+.landingPage button:hover{
+    background-color: white;
+  color:#DD4124;
+}

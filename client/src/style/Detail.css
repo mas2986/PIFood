@@ -1,0 +1,222 @@
+@import url('https://fonts.googleapis.com/css?family=Raleway&display=swap');
+
+*{
+	padding:0;
+	margin:0;
+	box-sizing:border-box;
+}
+
+.card{
+	display: flex;
+   justify-content: center;
+   align-items: center;
+	margin:30px auto;
+}
+
+.card .product{
+	width:600px;
+	height:550px;
+	background:#fff;
+	position:relative;
+	display:flex;
+	justify-content: flex-end;
+	border-radius:.5rem;
+	transition:all .3s ease
+}
+.card .product .left-side{
+	position:absolute;
+	top:8%;
+	left:-20%;
+	width:350px;
+	height:330px;
+	box-shadow: 4px 4px 25px -2px rgba(0, 0, 0, 0.3)
+}
+
+.card .product .container{
+	background:#9be010;
+	background:radial-gradient(#e5f89e, #96e001);
+	width:350px;
+	height:330px;
+	border-radius:.5rem .5rem 0 0;
+}
+
+.card .product .left-side .main-photo{
+	position:absolute;
+	top: 0%;
+	left:0%;
+	width:100%;
+	height:auto;
+}
+
+.card .product .left-side .main-photo img{
+    width:100%;
+    border-top-left-radius: 0.5rem;
+    border-top-right-radius: 0.5rem;
+	filter: saturate(150%) contrast(120%) hue-rotate(10deg) drop-shadow(1px 20px 10px rgba(0, 0, 0, 0.3));
+}
+
+
+.card .product .left-side .info {
+	position:absolute;
+	bottom:0;
+	left:0;
+	width:100%;	
+	text-align:center;
+	align-items:center;
+	background:#2c3e55;
+    height:100px;
+    padding-top:1rem;
+	border-radius:0 0 .5rem .5rem
+}
+
+.card .product .left-side .info span{
+    color:#a6a6a6;
+	font-size:.9rem
+}
+
+.card .product .left-side .info ul {
+	margin-top:.8rem;
+}
+
+
+.card .product .left-side .info ul li{
+	padding: 0 0 .4rem .2rem;
+	font-size:.8rem;
+	color:#FFF
+}
+
+
+.card .product .right-side{
+	position:absolute;
+	top:8%;
+	left:44%;
+	width:100%;
+}
+
+.card .product .right-side .text{
+	position:absolute;
+	top:0%;
+	left:0%;
+}
+
+.card .product .right-side .text h1{
+	color:#4c4c4c;
+	font-size:1.6rem;
+	margin-top: .8rem;
+}
+
+.card .product .right-side .text span{
+	color:#a6a6a6;
+	font-size:.9rem
+}
+
+.card .product .right-side .price{
+	
+	color:#ff3f40;
+	margin-top:6rem;
+	display:flex;
+	justify-content:flex-start;
+	align-items:center
+}
+
+.card .product .right-side .price h2{font-size:2.9rem}
+
+.card .product .right-side .price span{font-size:1.2rem}
+
+.card .product .right-side .price span:last-child{
+	color:#a6a6a6;
+	margin-left:.7rem;
+	font-size:1.8rem
+}
+
+.card .product .right-side .select-color{
+	margin-top:2rem
+}
+
+.card .product .right-side .select-color span{
+	color:#a4a4a4;
+	font-size:.9rem;
+	letter-spacing:1.2px
+}
+
+.card .product .right-side .select-color .color-apple{
+	display:flex;
+	justify-content:flex-start;
+	align-items:center;
+}
+
+.card .product .right-side .select-color .color-apple >div{
+	margin-right:.4rem;
+	margin-top:.9rem;
+	width:2.8rem;
+	height:2.8rem;
+	padding:.3rem;
+	border:1px solid #a6a6a6;
+	cursor:pointer;
+	transition:all .3s ease
+}
+
+.card .product .right-side .select-color .color-apple div:first-child{
+	transform: scale(1.1);
+	border-color:#ff3f40
+}
+
+.card .product .right-side .select-color .color-apple div img{
+	width:100%
+}
+
+.card .product .right-side .select-color .color-apple div:hover{
+	transform:translateY(-10px) scale(1.1);
+	border-color:#ff3f40
+}
+
+.card .product .right-side .info{
+	margin-top:1.5rem;
+}
+
+.card .product .right-side .info span{
+	color:#a4a4a4;
+	font-size:.9rem
+}
+
+.card .product .right-side .info ul {
+	margin-top:.8rem;
+}
+
+
+.card .product .right-side .info ul li{
+	padding: 0 0 .4rem .2rem;
+	font-size:.8rem;
+	color:#333
+}
+
+.card .product .right-side .btn{
+    margin-top:1rem;
+    position:absolute;
+	top:150%;
+	left:-15%;
+	width:100%;
+}
+
+.card .product .right-side .btn button{
+	padding:1.5rem 3.1rem;
+	border:none;
+	cursor:pointer;
+	background-image: linear-gradient(to top, #f77062 0%, #fe5196 100%);
+	color:#fff;
+	font-weight:800;
+	border-radius:.5rem;
+	font-size:1.1rem;
+	letter-spacing:1.3px;
+	box-shadow: 2px 2px 25px -7px #4c4c4c;
+	transition:all .5s ease
+}
+
+.card .product .right-side .btn button:hover{
+	background:#ff3f40;
+	transform:translateY(-10px) scale(1.1)
+}
+
+
+
+

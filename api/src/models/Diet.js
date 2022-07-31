@@ -1,7 +1,7 @@
 const {DataTypes} = require('sequelize');
 
 module.exports = (sequelize)=>{
-    sequelize.define('Type',{      
+    sequelize.define('diet',{      
         name:{
             type:DataTypes.ENUM('gluten free',
             'dairy free',
