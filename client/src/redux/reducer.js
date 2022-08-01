@@ -34,7 +34,7 @@ const rootReducer = (state = initialState, action) =>{
             console.log(action.payload);
             return{
                 ...state,
-                searchFood: action.payload
+                food: action.payload
             }
         case ADD_FOOD:
             console.log('Añadiendo receta');

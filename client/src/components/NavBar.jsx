@@ -18,7 +18,7 @@ export default function NavBar(){
         e.preventDefault();
         if(input!=='') {
             dispatch(getSearchFood(input));
-            history.push(`/?search=${input}`);
+            history.push(`/search?title=${input}`);
             setInput('');
         }
         else alert('Ingrese un nombre para realizar la búsqueda');

@@ -12,6 +12,7 @@ function App() {
     <div className="App">
       <NavBar/>
       <Route exact path='/' component={LandingPage}/>
+      <Route path='/search' render={(location)=><Home location={location}/>}/>
       <Route exact path='/home' component={Home}/>
       <Route exact path='/detail/:id' render={(match)=><Detail match={match}/>}/>
       <Route exact path='/create' component={CreateFood}/>

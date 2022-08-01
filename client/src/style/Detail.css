@@ -6,6 +6,11 @@
 	box-sizing:border-box;
 }
 
+ .containerDetail{
+    max-width: 75%;
+    margin: 0 auto;
+}
+
 .card{
 	display: flex;
    justify-content: center;

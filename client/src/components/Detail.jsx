@@ -16,15 +16,15 @@ export default function Detail({ match }) {
     }, [dispatch]);
 
     return (
-        <>
-        <div class="card">
-            <div class="product">
-                <div class="left-side">
-                    <div class="container">
-                        <div class="main-photo">
+        <div className="containerDetail">
+        <div className="card">
+            <div className="product">
+                <div className="left-side">
+                    <div className="container">
+                        <div className="main-photo">
                             <img src={idFood.image} />
                         </div>
-                        <div class="info">
+                        <div className="info">
                             <span>DISHTYPES</span>
                             <ul>
                                 {idFood.dishTypes?.length ? idFood.dishTypes.map(el => <li key={el}>{`${el[0].toUpperCase()}${el.slice(1)}`}</li>):<li>No especificado</li>}
@@ -32,23 +32,23 @@ export default function Detail({ match }) {
                         </div>                        
                     </div>
                 </div>
-                <div class="right-side">
-                    <div class="text">
+                <div className="right-side">
+                    <div className="text">
                         <h1>{idFood.title}</h1>
                         <span>ID: {idFood.id}</span>
                     </div>
-                    <div class="price">
+                    <div className="price">
                         <span>HScore</span>
                         <h2><strong>{idFood.healthScore}</strong></h2>
                     </div>
 
-                    <div class="info">
+                    <div className="info">
                         <span>DIETS</span>
                         <ul>
                             {idFood.diets && idFood.diets.map(el => <li key={el}>{`${el[0].toUpperCase()}${el.slice(1)}`}</li>)}
                         </ul>
                     </div>                  
-                    <div class="btn">
+                    <div className="btn">
                     <Link to='/home'>
                         <button>GO TO HOME</button>
                     </Link>
@@ -66,7 +66,7 @@ export default function Detail({ match }) {
                     {idFood.steps&&idFood.steps.map(el=><li>{el}</li>)}
                 </ol>
             </div>
-        </>
+        </div>
     )
 
 }
