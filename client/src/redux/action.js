@@ -98,6 +98,7 @@ export function orderHScore(value){
 }
 
 export function filterDiets(value){
+    alert('Filtrado exitoso')
     return{
         type: FILTER_DIETS,
         payload: value

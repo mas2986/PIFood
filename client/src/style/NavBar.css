@@ -12,6 +12,11 @@
     color: white
 }
 
+.text:hover{
+  color: #DD4124;
+  text-decoration: #DD4124;
+}
+
 nav div .btnSubmit{
   background:#DD4124;
     color:#FFF;

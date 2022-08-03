@@ -1,0 +1,362 @@
+/* body {
+  background: #cecece;
+  font-family: 'Quicksand', sans-serif;
+} */
+
+
+
+h1 {
+  font-family: 'Barriecito', cursive;
+  text-align: left;
+}
+
+h3 {
+  font-family: 'Quicksand', sans-serif;
+  text-align: left;
+  margin-top: -20px;
+}
+
+.wrapper {
+  border-radius: 5px;
+  display: inline-block;
+  background: #fff;
+  position: relative;
+  margin: 10px 100px;
+  width: 300px;
+  height: auto;
+  overflow: hidden;
+  box-shadow: 0px 10px 25px #999;
+}
+
+.pic {
+  height: 180px;
+  /* background: url('https://www.filepicker.io/api/file/nsC57aJTOKA3okcoanwS') no-repeat;
+  background-size: 400px;
+	background-position: center; */	
+  padding: 0 0 20px 0;
+  margin-bottom: 55px;
+}
+
+.wrapper:hover,
+.wrapper:focus{
+  transform: scale(1.05);
+}
+
+p.header {
+  padding: 0 20px;
+  font-size: 18px;
+  font-weight: bold;
+  font-style: italic;
+}
+
+p.content {
+	color:rgba(0,0,0,0.9);
+  padding: 0 20px;
+  font-size: 12px;
+  text-align: justify;
+}
+
+.descriptionUl {
+	font-size: 0.8em;
+	list-style: disc;
+	margin-left: 1em;
+}
+
+.descriptionLi {
+	text-indent: -0.6em;
+	margin-bottom: 0.5em;
+}
+
+.readmore {
+  height: 40px;
+  width: 100px;
+  float: right;
+  padding-left: 10px;
+  line-height: 40px;
+  background-color: #2c3e55;
+  margin: 20px;
+  font-size: 12px;
+  border-radius: 5px;
+}
+
+.readmore:hover {
+  background-color: #9fdf55;
+}
+
+.readmore i {
+  color: #fff;
+  margin-left: 5px;
+  transition: cubic-bezier(0.68, -0.55, 0.27, 01.55) 320ms;
+}
+
+.readmore:hover i {
+  margin: 0 0 0 20px;
+}
+
+
+
+
+.button-center {
+  background-color: #2c3e55;
+  margin-top: 20px;
+}
+
+.leesmeer {
+  height: 40px;
+  width: 110px;
+  padding-left: 10px;
+  line-height: 40px;
+  margin: 0 auto;
+	font-size: 15px;
+	color:white;
+  border-radius: 5px;
+}
+.button-center:hover {
+  background-color: rgba(0,0,0,0.9)
+}
+
+
+/* @import url('https://fonts.googleapis.com/css?family=Montserrat&display=swap');
+
+html{
+	--food-card-text-color: #ffffffee;
+	--card-background:whitesmoke;
+	--card-properties-bg:#F2082Dcc;
+	--card-properties-text-color:white;
+  }
+  .foodCard{margin:0 auto;position:relative;width:400px;height:350px;background:transparent;font-family:"Montserrat",sans-serif;}
+  .foodCardImage{position:relative;top:20%;left:5%;width:40%;height:40%;border-radius:5px;overflow:hidden;background:#ffffff45;box-shadow:0 0 10px 2px #00000045;z-index:5;}
+  .foodCardImage > img{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);height:100%;width:auto;}
+  .foodCardContent{position:absolute;bottom:20%;right:0;width:80%;height:40%;background:white;padding:20px;border-radius:15px;box-shadow:5px 5px 10px 2px #00000045;
+	background: var(--card-background);
+  }
+  .foodCardFoodName,.foodCardArtistName{position:relative;left:15%;top:-5%;color:var(--food-card-text-color);z-index:6;padding:5px;font-size:100%;}
+  .foodCardArtistName{letter-spacing:2px;left:-15%}
+  .foodCardFoodName > *,.food-card-artist-name > *{margin:0;text-overflow:ellipsis;white-space:nowrap;width:250px;overflow:hidden;text-shadow:1px -2px black,1px -1px black;}
+  .foodCardAbout{margin:20px 10px;height:45px;overflow:hidden;width:95%;position:relative;left:35%;top:-35%;font-size:12px;font-family:"Montserrat",sans-serif;opacity:0.56;}
+  .aboutShadow{
+	position:absolute;
+	left:0;
+	bottom:0;
+	width:100%;
+	height:35px;
+	background:linear-gradient( transparent, var(--card-background));z-index:2;
+  }
+  .foodCardFoodProperties{
+	position:absolute;
+	left:50%;
+	bottom:-50%;
+	transform:translate(-50%,-105%);
+	z-index:7;
+	border-radius:15px;padding:10px 15px;
+	color:var(--card-properties-text-color);
+	text-align:center;
+	background: var(--card-properties-bg);
+	width:fit-content;
+	box-shadow:0 0 10px 2px #00000045;
+  }
+  .foodCardFoodProperties > div{border-right:1px solid var(--card-properties-text-color);width:fit-content;padding:0 10px;display:inline-block;}
+  .foodCardFoodProperties > div:last-child{border-right:none;}
+  .foodCardFoodProperties > div > i{font-size:16px;margin-bottom:5px;}
+  .foodCardFoodProperties > div > p{font-size:10px;margin:0;}
+
+  .detailBtn {
+	position:absolute;
+	left:50%;
+	transform:translate(-50%,-105%);
+	z-index:7;
+	border-radius:15px;
+	padding:10px 15px;
+	border: none;
+	border-radius: 7px;
+	font-size: 0.8em;
+	font-weight: 700;
+	letter-spacing: 1.3px;
+	color: #fff;
+	background-color: #ff3f40;
+	box-shadow: 2px 2px 25px -7px #4c4c4c;
+	cursor: pointer;
+  }
+  
+  .flexbox{display:flex;justify-content:center;vertical-align:middle;flex-wrap:wrap;width:90%;margin:5%;}
+  .flexbox > *{margin:auto 20px;}
+
+	 */
+	 
+/* 	 @import url(https://fonts.googleapis.com/css?family=Roboto);
+
+
+ ----- Global ----- 
+
+
+ ----- Product Section ----- 
+.product {
+	display: grid;
+	grid-template-columns: 0.9fr 1fr;
+	margin: 2rem auto;
+	 padding: 2.5em 0; 
+	min-width: 600px;
+	background-color: white;
+	 border-radius: 5px; 
+}
+
+ ----- Photo Section ----- 
+.productPhoto {
+	position: relative;
+}
+
+.photoContainer {
+	 position: absolute;
+	left: -2.5em; 
+	display: grid;
+	grid-template-rows: 1fr;
+	width: 100%;
+	height: 100%;
+	border-radius: 6px;
+	box-shadow: 4px 4px 25px -2px rgba(0, 0, 0, 0.3);
+}
+
+.photoMain {
+	border-radius: 6px 6px 0 0;
+	background-color: #9be010;
+    background: radial-gradient(#e5f89e, #96e001);
+    width: 315px;
+    height: 320px;
+}
+	.controls {
+		display: flex;
+		justify-content: space-between;
+		padding: 0.8em;
+		color: #fff;
+    }
+		.icon {
+			cursor: pointer;
+		}
+
+    .photoMainImg {
+		position: absolute;
+		left:0;
+		top: 0;
+        width: 315px;
+        height: 320px;
+		filter: saturate(150%) contrast(120%) hue-rotate(10deg)
+			drop-shadow(1px 20px 10px rgba(0, 0, 0, 0.3));
+	}
+
+
+.photoAlbum {
+	 padding: 0.7em 1em; 
+	border-radius: 0 0 6px 6px;
+	background-color: #fff;
+}
+	.photoAlbumUl {
+		display: flex;
+        justify-content: space-around;
+        text-decoration: none;
+	}
+
+	.photoAlbumLi {
+		float: left;
+		width: 55px;
+		height: 55px;
+		padding: 7px;
+		border: 1px solid #a6a6a6;
+		border-radius: 3px;
+	}
+
+
+ ----- Informations Section ----- 
+.productInfo {
+    padding: 0.8em 0;
+    box-shadow: 4px 4px 25px -2px rgba(0, 0, 0, 0.3);
+}
+
+ .title {} 
+	.titleH1 {
+		margin-bottom: 0.1em;
+		color: #4c4c4c;
+		font-size: 1.5em;
+		font-weight: 900;
+	}
+
+	.titleSpan {
+		font-size: 0.7em;
+		color: #a6a6a6;
+	}
+
+
+.price {
+	margin: 1.5em 0;
+	color: #ff3f40;
+	font-size: 1.2em;
+}
+	.priceSpan {
+		padding-left: 0.15em;
+		font-size: 2.9em;
+	}
+
+
+.variant {
+	overflow: auto;
+}
+	.variantH3 {
+		margin-bottom: 1.1em;
+	}
+
+	.variantLi {
+		float: left;
+		width: 35px;
+		height: 35px;
+		padding: 3px;
+		border: 1px solid transparent;
+		border-radius: 3px;
+		cursor: pointer;
+
+		&:first-child,
+		&:hover {
+			border: 1px solid #a6a6a6;
+		} 
+	}
+
+.variantLi:not(:first-child) {
+		margin-left: 0.1em;
+	}
+
+
+.description {
+	clear: left;
+	margin: 2em 0;
+}
+	.descrptionH3 {
+		margin-bottom: 1em;
+	}
+
+	.descriptionUl {
+		font-size: 0.8em;
+		list-style: disc;
+		margin-left: 1em;
+	}
+
+	.descriptionLi {
+		text-indent: -0.6em;
+		margin-bottom: 0.5em;
+	}
+
+
+.buyBtn {
+	padding: 1.5em 3.1em;
+	border: none;
+	border-radius: 7px;
+	font-size: 0.8em;
+	font-weight: 700;
+	letter-spacing: 1.3px;
+	color: #fff;
+	background-color: #ff3f40;
+	box-shadow: 2px 2px 25px -7px #4c4c4c;
+	cursor: pointer;
+
+&:active {
+		transform: scale(0.97);
+	} 
+}
+ */

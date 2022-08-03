@@ -3,3 +3,32 @@
     max-width: 75%;
     margin: 0 auto;
 }
+
+.containerSelect{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.containerSelect h4{
+    margin-top: 2rem;
+}
+
+.btnHome{    
+	padding:1rem 1.5rem;
+	border:none;
+	cursor:pointer;
+	background-image: linear-gradient(to top, #f77062 0%, #fe5196 100%);
+	color:#fff;
+	font-weight:800;
+	border-radius:.5rem;
+	font-size:1.1rem;
+	letter-spacing:1.3px;
+	box-shadow: 2px 2px 25px -7px #4c4c4c;
+	transition:all .5s ease
+}
+
+.btnHome:hover{
+	background:#ff3f40;
+	transform:translateY(-10px) scale(1.1)
+}

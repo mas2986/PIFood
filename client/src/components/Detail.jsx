@@ -15,56 +15,44 @@ export default function Detail({ match }) {
         if (id) dispatch(getIdFood(id));
     }, [dispatch]);
 
-    return (
-        <div className="containerDetail">
-        <div className="card">
-            <div className="product">
-                <div className="left-side">
-                    <div className="container">
-                        <div className="main-photo">
-                            <img src={idFood.image} />
-                        </div>
-                        <div className="info">
-                            <span>DISHTYPES</span>
-                            <ul>
-                                {idFood.dishTypes?.length ? idFood.dishTypes.map(el => <li key={el}>{`${el[0].toUpperCase()}${el.slice(1)}`}</li>):<li>No especificado</li>}
-                            </ul>                            
-                        </div>                        
-                    </div>
+    return (       
+        <div id="container">	
+	
+            <div className="product-details">
+		
+	            <h1>{idFood.title}</h1>
+	            <div className="hint-star star">
+		            <h3>Steps</h3>
+	            </div>		
+			    <p className="information">{idFood.steps&&idFood.steps.map(e=>e)}</p>			
+                <div className="control">	
+    	            <button className="btn">
+                        <span className="price">HSCORE</span>
+                        <span className="shopping-cart">ID</span>
+                        <span className="buy">{idFood.healthScore}</span>
+                    </button>	
+                </div>	    		
+            </div>	
+            <div className="product-image">	
+            	<img src={idFood.image} alt=""/>	
+                <div className="info">
+	                <h2> DIETS</h2>
+	                <ul>
+		                {idFood.diets&&idFood.diets.map((e,i)=><li><strong>Diets {i+1} : </strong>{e} </li>)}
+                        
+		                {/* <li><strong>Shade : </strong>Olive green</li>
+		                <li><strong>Decoration: </strong>balls and bells</li>
+		                <li><strong>Material: </strong>Eco-Friendly</li> */}
+		            </ul>
+                    <h2>DISHTYPES</h2>
+                    <ul>
+		                {idFood.dishTypes&&idFood.dishTypes.map((e,i)=><li><strong>DishTypes {i+1} : </strong>{e} </li>)}
+                        
+		                {/* <li><strong>Shade : </strong>Olive green</li>
+		                <li><strong>Decoration: </strong>balls and bells</li>
+		                <li><strong>Material: </strong>Eco-Friendly</li> */}
+		            </ul>
                 </div>
-                <div className="right-side">
-                    <div className="text">
-                        <h1>{idFood.title}</h1>
-                        <span>ID: {idFood.id}</span>
-                    </div>
-                    <div className="price">
-                        <span>HScore</span>
-                        <h2><strong>{idFood.healthScore}</strong></h2>
-                    </div>
-
-                    <div className="info">
-                        <span>DIETS</span>
-                        <ul>
-                            {idFood.diets && idFood.diets.map(el => <li key={el}>{`${el[0].toUpperCase()}${el.slice(1)}`}</li>)}
-                        </ul>
-                    </div>                  
-                    <div className="btn">
-                    <Link to='/home'>
-                        <button>GO TO HOME</button>
-                    </Link>
-                    </div>         
-                </div>
-            </div>
-        </div>
-        <div>
-                <h3>SUMMARY</h3>
-                <p>{idFood.summary}</p>
-            </div>
-            <div>
-                <h3>STEPS</h3>
-                <ol>
-                    {idFood.steps&&idFood.steps.map(el=><li>{el}</li>)}
-                </ol>
             </div>
         </div>
     )

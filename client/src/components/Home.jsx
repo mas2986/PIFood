@@ -60,18 +60,26 @@ export default function Home(){
                 currentPage = {currentPage}
                 foodPerPage={foodPerPage}
             />
-            <Order setOrder={setOrder} setCurrentPage={setCurrentPage}/>
-            <Filter setCurrentPage={setCurrentPage} diets={diets}/>
-            {search?<h4>{lengthFood} Resultados para tu búsqueda</h4>:null}
-            {currentFood.length&&currentFood.map(el=>
-                <FoodCard
-                    key={el.id}
-                    id = {el.id}
-                    title = {el.title}
-                    image = {el.image}                    
-                    diets = {el.diets}
-                />)}
-            {search?<button onClick={searchToHome}>GO TO HOME</button>:null}
+            <div className={s.containerSelect}>
+                <Order setOrder={setOrder} setCurrentPage={setCurrentPage}/>
+                <Filter setCurrentPage={setCurrentPage} diets={diets}/>
+            </div>
+            <div className={s.containerSelect}>
+                {search?<h4>{lengthFood} Resultados para tu búsqueda</h4>: null}
+            </div>
+            <div className={s.containerFood}>
+                {currentFood.length&&currentFood.map(el=>
+                    <FoodCard
+                        key={el.id}
+                        id = {el.id}
+                        title = {el.title}
+                        image = {el.image}                    
+                        diets = {el.diets}
+                    />)}
+            </div>
+                <div className={s.containerSelect}>
+                    {search?<button className={s.btnHome} onClick={searchToHome}>GO TO HOME</button>:null}
+                </div>
         </div>
     )
 }
