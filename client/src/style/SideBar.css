@@ -1,0 +1,22 @@
+.sideBar{
+    position: absolute;
+    background-color: #222f3e;
+    color:#fff;
+    top:0;
+    left: 0;
+    height: 100vh;
+    width:250px;
+    transform: translateX(-100%);
+    transition: all 0.4s;
+}
+
+.sideBar-open{
+    transform: translateX(0%);
+    transition: all 0.4s;
+}
+.sideBar li{
+    list-style: none;
+    padding:1rem 2 rem;
+    border-bottom: solid rgba(0,0,0,0.1) 1px;
+    
+}

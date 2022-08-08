@@ -8,8 +8,8 @@ import Order from './Order';
 import Filter from './Filter';
 import Loading from './Loading';
 import NavBar from './NavBar';
+import SideBar from './SideBar';
 import s from '../style/Home.module.css'
-import index from 'axios';
 
 export default function Home(){
     let foods = useSelector(state=>state.food);
@@ -20,6 +20,7 @@ export default function Home(){
     const location = useLocation();
     const history = useHistory();
     const [search, setSearch] = useState(false);
+    const [sideBar, setSideBar] = useState(false);
 
     //Paginado
     const [foodPerPage,setFoodPerPage] = useState(9);
@@ -30,6 +31,7 @@ export default function Home(){
     let lengthFood = foods.length
 
     const [order,setOrder] = useState('');
+    const handleSideBar = ()=>setSideBar((prevState)=>!prevState);
 
     function searchToHome(e){
         e.preventDefault();
@@ -58,7 +60,8 @@ export default function Home(){
 
     return(
         <>
-        <NavBar/>
+        <NavBar openSideBar={handleSideBar}/>
+        <SideBar sideBar={sideBar}/>
         <div className={s.container}>
             <Paginado 
                 food={lengthFood}
@@ -66,10 +69,10 @@ export default function Home(){
                 currentPage = {currentPage}
                 foodPerPage={foodPerPage}
             />
-            <div className={s.containerSelect}>
+            {/* <div className={s.containerSelect}>
                 <Order setOrder={setOrder} setCurrentPage={setCurrentPage}/>
                 <Filter setCurrentPage={setCurrentPage} diets={diets}/>
-            </div>
+            </div> */}
             {loading&&<Loading/>} 
             <div className={s.containerSelect}>
                 {search?<h4>{lengthFood} Resultados para tu búsqueda</h4>: null}
