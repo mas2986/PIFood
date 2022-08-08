@@ -1,11 +1,13 @@
 import React, {useEffect,useState} from 'react';
 import {useDispatch,useSelector} from 'react-redux';
 import {useLocation, useHistory} from 'react-router-dom';
-import {getFood,getDiets,getCopyFood} from '../redux/action';
+import {getFood,getDiets,getSearchFood,showLoading,getCopyFood} from '../redux/action';
 import FoodCard from './FoodCard';
 import Paginado from './Paginado';
 import Order from './Order';
 import Filter from './Filter';
+import Loading from './Loading';
+import NavBar from './NavBar';
 import s from '../style/Home.module.css'
 import index from 'axios';
 
@@ -13,6 +15,7 @@ export default function Home(){
     let foods = useSelector(state=>state.food);
     let searchFood = useSelector(state=>state.searchFood);
     const diets = useSelector(state=>state.diets);
+    const loading = useSelector(state=>state.showLoading);
     const dispatch = useDispatch();
     const location = useLocation();
     const history = useHistory();
@@ -35,11 +38,15 @@ export default function Home(){
     }
 
     useEffect(()=>{
-        if(location.pathname==='/search'){
-            setSearch(()=>true)
-        };
         if(foods.length===0) {
             dispatch(getFood());
+            dispatch(showLoading(true))
+        };
+        if(location.pathname==='/search'){
+            console.log(location)
+            dispatch(getSearchFood(location.search.split('=')[1]))
+            setSearch(()=>true)
+            dispatch(showLoading(true));
         };
         if(diets.length===0){
             dispatch(getDiets())
@@ -49,11 +56,10 @@ export default function Home(){
             };
     },[dispatch])
 
-    
     return(
+        <>
+        <NavBar/>
         <div className={s.container}>
-            {console.log('Home',foods)}
-            {console.log('Search',search)}
             <Paginado 
                 food={lengthFood}
                 setCurrentPage={setCurrentPage}
@@ -64,6 +70,7 @@ export default function Home(){
                 <Order setOrder={setOrder} setCurrentPage={setCurrentPage}/>
                 <Filter setCurrentPage={setCurrentPage} diets={diets}/>
             </div>
+            {loading&&<Loading/>} 
             <div className={s.containerSelect}>
                 {search?<h4>{lengthFood} Resultados para tu búsqueda</h4>: null}
             </div>
@@ -77,9 +84,10 @@ export default function Home(){
                         diets = {el.diets}
                     />)}
             </div>
-                <div className={s.containerSelect}>
-                    {search?<button className={s.btnHome} onClick={searchToHome}>GO TO HOME</button>:null}
-                </div>
-        </div>
+            <div className={s.containerSelect}>
+                {search?<button className={s.btnHome} onClick={searchToHome}>GO TO HOME</button>:null}
+            </div>            
+        </div>  
+        </>              
     )
 }

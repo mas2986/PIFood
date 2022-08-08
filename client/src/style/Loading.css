@@ -1,0 +1,33 @@
+.containerLoading{
+    position: relative;
+    left:50%;
+    margin-top: 2rem;
+}
+
+.spinner{
+    animation: spin 1s linear infinite;
+    background: linear-gradient(to right,grey,white);
+    border-radius: 50%;
+    height: 60px;
+    position: relative;
+    width: 60px;
+    margin: 2rem auto;
+}
+
+.fondo{
+    background: #00061F;
+    height: 40px;
+    margin: 10px;
+    position: absolute;
+    width: 40px;
+    border-radius: 50%;
+}
+
+@keyframes spin{
+    0%{
+        transform: rotate(0deg);
+    }
+    100%{
+        transform: rotate(360deg);
+    }
+}

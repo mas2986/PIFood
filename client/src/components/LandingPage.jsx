@@ -4,11 +4,11 @@ import '../style/LandingPage.css'
 
 export default function LandingPage(){
     return(
-        <div className="landingPage">
-        <h2>Bienvenidos a Henry Food</h2>
-        <Link to='/home'>
-            <button>INGRESAR</button>
-        </Link>
+        <div className="hero">
+            <h2>Bienvenidos a Henry Food</h2>
+            <Link to='/home'>
+                <button>INGRESAR</button>
+            </Link>
         </div>
     )
 }

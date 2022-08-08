@@ -1,10 +1,11 @@
-import {GET_FOOD,GET_COPY_FOOD,GET_DIETS, GET_ID_FOOD,GET_SEARCH_FOOD,ADD_FOOD,ORDER_BY_NAME,ORDER_BY_HSCORE,FILTER_DIETS} from './constantes';
+import {SHOW_LOADING, GET_FOOD,GET_COPY_FOOD,GET_DIETS, GET_ID_FOOD,CLEAR_DETAIL, GET_SEARCH_FOOD,ADD_FOOD,ORDER_BY_NAME,ORDER_BY_HSCORE,FILTER_DIETS} from './constantes';
 const initialState = {
     food:[],
     copyFood:[],
     diets:[],
     searchFood: [],
-    idFood:{}
+    idFood:{},
+    showLoading: false
 }
 
 const rootReducer = (state = initialState, action) =>{
@@ -19,6 +20,11 @@ const rootReducer = (state = initialState, action) =>{
             return{
                 ...state,
                 food:state.copyFood
+            }
+        case CLEAR_DETAIL:
+            return{
+                ...state,
+                idFood:{}
             }
         case GET_DIETS:
             return{
@@ -78,6 +84,11 @@ const rootReducer = (state = initialState, action) =>{
             return{
                 ...state,
                 food: filterDiets
+            }
+        case SHOW_LOADING:
+            return{
+                ...state,
+                showLoading: action.payload
             }
 
         default: return {...state}

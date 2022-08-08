@@ -3,9 +3,7 @@ form{
     color: #FFF;
     height: 550px;
     width:400px;
-    position: absolute;
-    bottom:-20%;
-    left:33%;
+    margin: 2rem auto;
     padding: 1rem;
 }
 

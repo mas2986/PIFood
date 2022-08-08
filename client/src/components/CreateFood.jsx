@@ -1,4 +1,5 @@
 import React,{useState,useEffect} from 'react';
+import NavBar from './NavBar';
 import {useDispatch,useSelector} from 'react-redux';
 import {getDiets,addRecipe} from '../redux/action';
 import {useHistory} from 'react-router-dom';
@@ -72,6 +73,8 @@ export default function CreateFood(){
     }
 
     return(
+        <>
+        <NavBar/>
         <form>
             <h4>Crear receta</h4>
             <div>
@@ -136,6 +139,7 @@ export default function CreateFood(){
             </div>         
             <button type="submit" onClick = {handleSubmit}>CREAR</button>
         </form>
+        </>
     )
 }
 

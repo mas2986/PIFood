@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import {useDispatch} from 'react-redux';
 import {Link,useHistory} from 'react-router-dom';
-import {getSearchFood} from '../redux/action';
+import {getSearchFood,showLoading} from '../redux/action';
 import '../style/NavBar.css'
 
 export default function NavBar(){
@@ -20,6 +20,7 @@ export default function NavBar(){
             dispatch(getSearchFood(input));
             history.push(`/search?title=${input}`);
             setInput('');
+            dispatch(showLoading(true));
         }
         else alert('Ingrese un nombre para realizar la búsqueda');
     }
@@ -28,15 +29,15 @@ export default function NavBar(){
         <nav>
             <ul className="container">
                 <Link to='/' className="text">
-                    <li>INICIO</li>
+                    <li>Inicio</li>
                 </Link>
                 <Link to='/home' className="text">
-                    <li>HOME</li>
+                    <li>Home</li>
                 </Link>
                 <Link to='/create' className="text">
-                    <li>CREAR FOOD</li>
+                    <li>Crear Receta</li>
                 </Link>
-                <div>
+{/*                 <div>
                     <input 
                     value={input}
                     onChange={handleInput} 
@@ -44,7 +45,7 @@ export default function NavBar(){
                     placeholder='Búsqueda por nombre de comida'/>
                     <input className="btnSubmit" type='submit' onClick={handleSubmit}  value="BUSCAR"/>
                 </div>
-            </ul>
+ */}            </ul>
         </nav>
 
     )

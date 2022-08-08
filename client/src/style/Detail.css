@@ -9,6 +9,9 @@ background: #DFC2F2;
   
 	} */
 
+.loading{
+	left:0%;
+}
 #container{
 	box-shadow: 0 15px 30px 1px grey;
 	background: rgba(255, 255, 255, 0.90);
@@ -176,7 +179,10 @@ font-family: 'EB Garamond', serif;
     left: 0;
     top: 0;
 }
-
+.containerSelect{
+	display:flex;
+	justify-content: center;
+}
 .info h2 {text-align: center}
 .product-image:hover .info{transform: translateX(0);}
 
@@ -185,6 +191,26 @@ font-family: 'EB Garamond', serif;
 
 .product-image:hover img {transition: all 0.3s ease-out;}
 .product-image:hover img {transform: scale(1.2, 1.2);}
+
+.btnHome{    
+	padding:1rem 1.5rem;
+	border:none;
+	cursor:pointer;
+	background-image: linear-gradient(to top, #f77062 0%, #fe5196 100%);
+	color:#fff;
+	font-weight:800;
+	border-radius:.5rem;
+	font-size:1.1rem;
+	letter-spacing:1.3px;
+	box-shadow: 2px 2px 25px -7px #4c4c4c;
+	transition:all .5s ease;
+	margin: 0 auto;
+}
+
+.btnHome:hover{
+	background:#ff3f40;
+	transform:translateY(-10px) scale(1.1)
+}
 /* @import url('https://fonts.googleapis.com/css?family=Raleway&display=swap');
 
 *{

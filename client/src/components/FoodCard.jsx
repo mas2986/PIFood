@@ -5,7 +5,19 @@ import '../style/FoodCard.css'
 export default function FoodCard({id,title,image, diets}){
     return(
         <>            
-  <div className="wrapper">
+ <figure className="image-block">
+    {/* <h1>{title}</h1> */}
+    <img src={image} alt={title} />
+    <figcaption>
+        <h3>{title}</h3>
+        {diets&&diets.join()}
+        
+        <Link to={`/detail/${id}`}>
+            <button>More Info</button>
+        </Link>
+    </figcaption>
+</figure>
+ {/*  <div className="wrapper">
     <div className="pic">
         <img src={image} alt={title}/>
     </div>
@@ -25,7 +37,7 @@ export default function FoodCard({id,title,image, diets}){
       </div>
     </Link>
   </div>
-
+ */}
         </>
   /*       <div className={s.product}>
         <div className={s.productPhoto}>

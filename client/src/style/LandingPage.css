@@ -1,11 +1,28 @@
-.landingPage{
+/* .hero{
     position:relative;
-    top:250px;
-    text-align: center;
+    height: 80vh;
+    background-image: linear-gradient(rgba(36,36,36,0.5),rgba(155,35,234,0.2)), url("https://fondosmil.com/fondo/35731.jpg");
+    background-size: contain;
+    max-width: 100%;
+    display:grid;
+    grid-template-columns: repeat(10,1fr);
+    grid-template-rows: repeat(8,1fr);    
     font-family: 'Oswald'
+} */
+
+.hero{
+  font-family: 'Oswald';
+  text-align: center;
+}
+.hero{
+  height: 100vh; 
+  background-image: url("https://fondosmil.com/fondo/35731.jpg");
+  background-size: 100vw 100vh;
+  /* background-position: center center; */
+  /* background-repeat: no-repeat;  */
 }
 
-.landingPage button{
+.hero button{
     background:#DD4124;
     color:#FFF;
     cursor:pointer;
@@ -23,7 +40,7 @@
      text-decoration: none;
 }
 
-.landingPage button:hover{
+.hero button:hover{
     background-color: white;
   color:#DD4124;
 }
