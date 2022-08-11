@@ -10,18 +10,18 @@ export default function NavBar({openSideBar}){
     return(  
         <nav>
             <ul className="container">
-                <div onClick={openSideBar}>
+                <div className="icon" onClick={openSideBar}>
                     <li><i className="ri-menu-fill"></i></li>                                        
-                </div>
-                {/* <Link to='/' className="text">
-                    <li>Inicio</li>
-                </Link> */}
+                </div>                
                 <div className="container-left">
                     <Link to='/home' className="text">
                         <li>Home</li>
                     </Link>
                     <Link to='/create' className="text">
-                        <li>Create Recipe</li>
+                        <li>New Recipe</li>
+                    </Link>
+                    <Link to='/' className="text">
+                        <li>LogOut</li>
                     </Link>
                 </div>
 {/*               

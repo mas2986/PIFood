@@ -1,0 +1,59 @@
+.content-select{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%
+    }
+.select-box{
+    position: relative;    
+    width: 240px;
+}
+
+.select-box select{
+    width: 100%;
+    position: relative;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+    padding:16px 30px 16px 85px;
+    background: #222f3e;
+    /* border-radius: 50px; */
+    -webkit-appearance: none;
+    appearance: none;
+    color:white;
+    border:1px solid #616161;
+
+}
+
+.select-box select::ms-expand{
+    display: none;
+}
+
+.select-box select:focus{
+    outline: none;
+    box-shadow: 0 0 10px -1px #FFD200;
+    /* box-shadow: 0 0 10px -1px #1abc9c; */
+}
+
+.select-box .label{
+    position: absolute;
+    z-index: 1;
+    display: inline-block;
+    font:600 22px;
+    color:white;
+    top:16px;
+    left:16px;
+}
+
+.select-box i{
+    position: absolute;
+    right: 0px;
+    top:0px;
+    color:white;
+    font-size: 18px;
+    background-color: #FFD200;
+    /* background-color: #1abc9c; */
+    height: 100%;
+}
+
+.select-box select:focus + i{
+    color:#222f3e;
+}

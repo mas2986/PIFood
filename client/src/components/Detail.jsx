@@ -69,7 +69,12 @@ export default function Detail({ match }) {
         </div>
         <div className="containerSelect">
             <Link to="/home">
-                <button className="btnHome" >GO TO HOME</button>
+            <button className="btnHome">
+                    <span class="label">Go to HOME</span>
+                    <span class="icon">
+                        <i class="ri-arrow-right-line"></i>
+                    </span>
+                </button>
             </Link>
         </div>
      </>

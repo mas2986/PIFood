@@ -1,13 +1,14 @@
 import React, {useState} from 'react';
-import {useDispatch} from 'react-redux';
-import {useHistory} from 'react-router-dom';
+import {useDispatch,useSelector} from 'react-redux';
+import {useHistory,Link} from 'react-router-dom';
 import {getSearchFood, showLoading} from '../redux/action';
 import Order from './Order';
 import Filter from './Filter';
 import '../style/SideBar.css';
 
-export default function SideBar({sideBar}){
+export default function SideBar({sideBar,setOrder,setCurrentPage}){
     const [input,setInput] = useState('');
+    const diets = useSelector(state=>state.diets);
     const dispatch = useDispatch();
     const history = useHistory();
 
@@ -30,18 +31,30 @@ export default function SideBar({sideBar}){
 
     return(
         <div className={sideBar?"sideBar sideBar-open":"sideBar"}>
-          <div>
-                    <i class="ri-search-line"></i>
-                    <input 
-                    value={input}
-                    onChange={handleInput} 
-                    type="text"
-                    placeholder='Búsqueda por nombre de comida'/>
-
-                    <input className="btnSubmit" type='submit' onClick={handleSubmit}  value="BUSCAR"/>
+            <div className="buscar"> 
+                <input 
+                value={input}
+                onChange={handleInput} 
+                type="text"
+                placeholder='Search Recipes'/>
+                <div className="btnSearch" onClick={handleSubmit}>
+                    <i className="ri-search-line"></i>
                 </div>
-            <li><Order/></li>
-            <li><Filter/></li>
+            </div>                   
+            <li><Order setOrder={setOrder} setCurrentPage={setCurrentPage}/></li>
+            <li className="filter"><Filter setCurrentPage={setCurrentPage} diets={diets}/></li>
+            <li className="github">
+                <a href="https://github.com/mas2986">
+                    <i class="ri-github-fill"></i>            
+                </a>
+                <span>GitHub</span>
+            </li>
+            <li className="linkedIn">
+                <a href="https://www.linkedin.com/in/marcos-alexis-saac-086380248/" target="_blank">
+                    <i class="ri-linkedin-box-fill"></i>
+                </a>
+                <span>LinkedIn</span>
+            </li>
         </div>
     )
 }

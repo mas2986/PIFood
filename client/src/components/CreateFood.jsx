@@ -55,6 +55,7 @@ export default function CreateFood(){
 
     const deleteDiets = (e)=>{
         e.preventDefault();
+        console.log('Haciendo click',e.target.value);
         setInput({
             ...input,
             diets: input.diets.filter(el=>el!==e.target.value)
@@ -75,10 +76,96 @@ export default function CreateFood(){
     return(
         <>
         <NavBar/>
+<div class="form">
+  <div class="form-toggle"></div>
+  <div class="form-panel one">
+    <div class="form-header">
+      <h1>NEW RECIPE</h1>
+    </div>
+    <div class="form-content">
+      <form>
+        <div class="form-group">
+            <label>Title </label>
+            <input type="text"
+                name = "title"
+                className="title"
+                value={input.title}
+                // placeholder = 'Ingrese el nombre de su receta'
+                onChange = {handleInput}
+            />
+            {errors.title?<p className = "danger">{errors.title}</p>:null}
+        </div>
+        <div class="form-group">
+            <label>Summary</label>
+            <input type="textarea"
+                name="summary"
+                className="textarea"
+                value={input.summary} 
+                // placeholder = 'Escribe un breve resumen de su plato'   
+                onChange = {handleInput}
+            />
+            {errors.summary?<p className="danger">{errors.summary}</p>:null}
+        </div>
+        <div class="form-group">
+            <label>Steps</label>
+            <input type="textarea"
+                name="steps"
+                className="textarea"
+                value={input.steps}
+                // placeholder = 'Pasos de su receta'
+                onChange = {handleInput}
+            />
+            {errors.steps?<p className="danger">{errors.steps}</p>:null}
+        </div>
+        <div class="form-group">
+            <label>HealthScore</label>
+            <input type="number" 
+                name="healthScore"
+                className="healthScore"
+                value={input.healthScore}
+                // placeholder='Nivel de comida saludable de su plato'
+                onChange = {handleInput}
+            />
+            {errors.healthScore?<p className="danger">{errors.healthScore}</p>:null}
+        </div>
+        <div class="form-group">
+            <label>Diets</label>
+            <select name="diets" onChange = {handleSelect}>
+                <option selected value="" hidden>Choice Diets</option>
+                {diets&&diets.map(el=><option key={el} value={el}>{el}</option>)}
+            </select>
+            <ul>
+                {input.diets&&input.diets.map(el=>
+                <li key={el} value={el}>                            
+                            <p>{el}</p>
+                            <button value={el} onClick={deleteDiets}>
+                                <i class="ri-delete-bin-fill"></i>
+                            </button>  
+
+                    {/* <button className="noselect">
+                        <span className="text">{el}</span>
+                        <div  className="icon">
+                            <i onClick={deleteDiets}class="ri-delete-bin-fill"></i>
+                        </div>
+                    </button> */}
+                </li>)}
+            </ul>
+        </div>
+        
+        <div class="form-group">
+            <button type="submit" onClick = {handleSubmit}>CREATE</button>
+        </div>
+      </form>
+    </div>
+  </div>
+  <div class="form-panel two">        
+  </div>
+</div>
+      {/*   <NavBar/>
         <form>
-            <h4>Crear receta</h4>
+            <h4>New Recipe</h4>
             <div>
-                <label>Nombre: </label>
+                <label>Title: </label>
                 <input type="text"
                     name = "title"
                     className="title"
@@ -121,9 +208,9 @@ export default function CreateFood(){
                 />
             </div>
             <div>
-                <label>Tipo de dieta</label>
+                <label>Diets</label>
                 <select name="diets" onChange = {handleSelect}>
-                    <option selected value="" hidden>Elige el tipo de dieta de tu plato</option>
+                    <option selected value="" hidden>Choice Diets</option>
                     {diets&&diets.map(el=><option key={el} value={el}>{el}</option>)}
                 </select>
                 <ul>
@@ -137,9 +224,9 @@ export default function CreateFood(){
                     </li>    
                 </ul>
             </div>         
-            <button type="submit" onClick = {handleSubmit}>CREAR</button>
+            <button type="submit" onClick = {handleSubmit}>CREATE</button>
         </form>
-        </>
+ */}        </>
     )
 }
 

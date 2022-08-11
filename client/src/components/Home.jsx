@@ -61,7 +61,7 @@ export default function Home(){
     return(
         <>
         <NavBar openSideBar={handleSideBar}/>
-        <SideBar sideBar={sideBar}/>
+        <SideBar sideBar={sideBar} setOrder={setOrder} setCurrentPage={setCurrentPage}/>
         <div className={s.container}>
             <Paginado 
                 food={lengthFood}
@@ -75,7 +75,7 @@ export default function Home(){
             </div> */}
             {loading&&<Loading/>} 
             <div className={s.containerSelect}>
-                {search?<h4>{lengthFood} Resultados para tu búsqueda</h4>: null}
+                {search&&!loading?<h4>{lengthFood} Resultados para tu búsqueda</h4>: null}
             </div>
             <div className={s.containerFood}>
                 {currentFood.length&&currentFood.map(el=>

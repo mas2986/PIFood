@@ -21,7 +21,7 @@ module.exports = (sequelize) => {
     image: {
       type:DataTypes.STRING,
       allowNull:false,
-      defaultValue:'https://us.123rf.com/450wm/yupiramos/yupiramos1903/yupiramos190311866/119117759-ilustraci%C3%B3n-de-vector-de-personaje-de-dibujos-animados-de-comida-de-hamburguesa.jpg?ver=6'
+      defaultValue:'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ8SnSB3yeB6CxBsI1aFM9OhK6Q5KqH99A-oVqY4NLOTO5N2v9SGhPcejQiy9bJKdkf24I&usqp=CAU'
     },    
     healthScore:{
       type:DataTypes.INTEGER,

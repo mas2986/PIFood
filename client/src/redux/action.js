@@ -86,7 +86,7 @@ export function addRecipe(body){
                 alert('Receta creada exitosamente');             
             }
        }
-        catch(e){console.log(e)}
+        catch(e){alert('Hubo un error al crear tu receta')}
     }
 }
 

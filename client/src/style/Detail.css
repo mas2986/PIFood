@@ -192,25 +192,65 @@ font-family: 'EB Garamond', serif;
 .product-image:hover img {transition: all 0.3s ease-out;}
 .product-image:hover img {transform: scale(1.2, 1.2);}
 
-.btnHome{    
-	padding:1rem 1.5rem;
-	border:none;
-	cursor:pointer;
-	background-image: linear-gradient(to top, #f77062 0%, #fe5196 100%);
-	color:#fff;
-	font-weight:800;
-	border-radius:.5rem;
-	font-size:1.1rem;
-	letter-spacing:1.3px;
-	box-shadow: 2px 2px 25px -7px #4c4c4c;
-	transition:all .5s ease;
-	margin: 0 auto;
-}
+.btnHome{ 	
+		position: relative;
+		font-size: 14px;
+		letter-spacing: 3px;
+		height: 3em;
+		padding: 0 3em;
+		border: none;
+		background-color: #FDD200;
+		color: #fff;
+		text-transform: uppercase;
+		overflow: hidden;
+		border-radius: 5px;
+		cursor:pointer;	      
+	}
 
-.btnHome:hover{
+btnHome::before {
+		content: '';
+		display: block;
+		position: absolute;
+		z-index: 0;
+		bottom: 0;
+		left: 0;
+		height: 0px;
+		width: 100%;
+		background: #FDD200;
+		background: linear-gradient(90deg, rgba(#FDD200,1) 20%, rgba(#cdd400,1) 100%);
+		transition: 0.2s;
+	   }
+
+btnHome .label {
+		position: relative;
+}
+	   
+.btnHome .icon {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		height: 3em;
+		width: 3em;
+		position: absolute;
+		top: 3em;
+		right: 0;
+		opacity: 0;
+		transition: 0.4s;
+	   }
+	   
+btnHome:hover::before {
+		height: 100%;
+	   }
+	   
+.btnHome:hover .icon {
+		top: 0;
+		opacity: 1;
+	   }
+
+/* .btnHome:hover{
 	background:#ff3f40;
 	transform:translateY(-10px) scale(1.1)
-}
+} */
 /* @import url('https://fonts.googleapis.com/css?family=Raleway&display=swap');
 
 *{

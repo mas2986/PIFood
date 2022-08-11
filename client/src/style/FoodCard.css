@@ -13,8 +13,7 @@ figure {
 	justify-content: center;
 	width: 300px;
 	/* height: 667px; */
-
-	box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+	box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
 	transition: all 0.3s cubic-bezier(.25,.8,.25,1);
 	overflow: hidden;
 }
@@ -43,15 +42,17 @@ figure h1 {
 figure img {
 		height: 100%;
 		transition: 0.25s;
+		box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+
 	}
 figure figcaption {
 		position: absolute;
-		bottom: -48%;
+		bottom: -66%;
 		left: 0;
 		width: 100%;
-		/* height: 50%; */
+		height: 200px; 
 		margin: 0;
-		padding: 30px;
+		padding: 5px;
 		background-color: rgba(0,0,0,0.85);
 		box-shadow: 0 0 20px rgba(0,0,0,0.4);
 		color: white;
@@ -65,11 +66,11 @@ figure figcaption	h3 {
 		}
 
 figure figcaption div{
-	display: flex;
-	justify-content: space-between;
+	/* display: flex;
+	justify-content: space-between; */
 }
-figure figcaption	p {
-			font-size: 14px;
+figure figcaption	span {
+			font-size: 0.8rem;
 			line-height: 1.75;
 		}
 figure figcaption	button {
@@ -79,15 +80,40 @@ figure figcaption	button {
 			justify-content: center;
 			margin: 10px 0 0;
 			padding: 10px 30px;
-			background-color: #1abc9c;
+			background-color: #FDD200;
+			padding: 14px 40px;
+			color: #fff;
+			text-transform: uppercase;
+			letter-spacing: 2px;
+			cursor: pointer;
+			border-radius: 10px;
+			border: 2px dashed #FDD200;
+			box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+ 			transition: .4s;
+
+			
+		/* 	 background-color: #FDD200;
 			border: none;
 			border-radius: 5px;
 			color: white;
 			font-size: 14px;
-			cursor:pointer;
+			cursor:pointer;  */
 		}
 
-
+		figure figcaption button span:last-child {
+			display: none;
+		 }
+		 
+figure figcaption button:hover {
+			transition: .4s;
+			border: 2px dashed #FDD200;
+			background-color: #fff;
+			color: #FDD200;
+		 }
+		 
+figure figcaption button:active {
+			background-color: #87dbd0;
+		 }
 
 /* h1 {
   font-family: 'Barriecito', cursive;

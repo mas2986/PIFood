@@ -1,6 +1,7 @@
 import React,{useEffect} from 'react';
 import {useDispatch} from 'react-redux';
 import {filterDiets} from '../redux/action';
+import '../style/Select.css'
 
 export default function Filter({setCurrentPage,diets}){
     const dispatch = useDispatch();
@@ -12,12 +13,16 @@ export default function Filter({setCurrentPage,diets}){
     }
 
     return(
-        <>
-        <select onChange={handleFilter}>
-            <option selected value="" hidden>Filtrar por tipo de dieta</option>
-            <option value="allDiets">Todas las dietas</option>
-            {diets&&diets.map(el=><option value={el} key={el}>{el}</option>)}
-        </select>
-        </>
+        <div className="content-select">
+            <div className="select-box">
+                <span className="label">Filter by:</span>
+                <select onChange={handleFilter}>
+                    <option selected value="" hidden>Diets</option>
+                    <option value="allDiets">All</option>
+                    {diets&&diets.map(el=><option value={el} key={el}>{el}</option>)}
+                </select>
+                <i class="ri-arrow-down-s-fill"></i>
+            </div>
+        </div>
     )
 }

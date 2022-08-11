@@ -10,11 +10,12 @@ export default function FoodCard({id,title,image, diets}){
     <img src={image} alt={title} />
     <figcaption>
         <h3>{title}</h3>
-        {diets&&diets.join()}
-        
-        <Link to={`/detail/${id}`}>
-            <button>More Info</button>
-        </Link>
+        <div>
+            {diets.length!==0?<span>{diets.join()}</span>:<span>Sin dietas</span>}            
+            <Link to={`/detail/${id}`}>
+                <button /* className="btn" */>More info</button>
+            </Link>
+        </div>
     </figcaption>
 </figure>
  {/*  <div className="wrapper">
