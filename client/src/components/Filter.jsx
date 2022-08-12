@@ -11,7 +11,7 @@ export default function Filter({setCurrentPage,diets}){
         dispatch(filterDiets(e.target.value));
         setCurrentPage(1);
     }
-
+    /* https://www.freejpg.com.ar/imagenes/premium/1198500404/patrr-n-sin-costura-de-vector-de-alimentos-cocina-fondo-de-pantalla-cafr-de-comida-rr-pida-con-iconos-gastronr-micos-textura-de-color-verde-esmeralda-textil-decorativo-diser-o-de-papel-de-envoltura-fondo-brillante-para-el-menr-recibos */
     return(
         <div className="content-select">
             <div className="select-box">

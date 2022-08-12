@@ -16,11 +16,16 @@
   justify-content: flex-start;
 }
 .container li{
-  margin-left: 3rem;
+  margin: 0.5rem;
   font-size: 1.2rem; 
   font-family: 'Ubuntu',sans-serif;
+  /* color:white; */
+}
+
+.ri-menu-fill{
   color:white;
 }
+
 .container-left li:hover,.container-left li:active, .container-left li.active,.container-left li:focus,
 .container-left li:visited
  {
@@ -36,11 +41,25 @@
     color: white
 }
 
-.text:hover{
-  color: #DD4124;
-  text-decoration: #DD4124;
+.container-left .active{
+  color:#183153;
+  background: #FDD200;
+  /* padding: 0.5rem;
+  text-align: center; */
 }
 
+.container-left .active:hover{
+  color:white;
+}
+
+/* .text:hover{
+  color: #DD4124;
+  text-decoration: #DD4124;
+} */
+/* body{
+  background-image: url("https://www.crushpixel.com/es/stock-vector/food-vector-seamless-pattern-cuisine-3757767.html");
+}
+*/
 nav div .btnSubmit{
   background:#DD4124;
     color:#FFF;

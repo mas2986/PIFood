@@ -54,12 +54,14 @@ export default function Home(){
             dispatch(getDiets())
         }
         return()=>{
+            console.log('Despachando GET Copy')
             dispatch(getCopyFood())
             };
     },[dispatch])
 
     return(
         <>
+        {console.log('Home',foods)}
         <NavBar openSideBar={handleSideBar}/>
         <SideBar sideBar={sideBar} setOrder={setOrder} setCurrentPage={setCurrentPage}/>
         <div className={s.container}>

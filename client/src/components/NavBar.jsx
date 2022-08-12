@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import {useDispatch} from 'react-redux';
-import {Link,useHistory} from 'react-router-dom';
+import {NavLink,useHistory} from 'react-router-dom';
 import {getSearchFood,showLoading} from '../redux/action';
 import '../style/NavBar.css'
 
@@ -14,15 +14,15 @@ export default function NavBar({openSideBar}){
                     <li><i className="ri-menu-fill"></i></li>                                        
                 </div>                
                 <div className="container-left">
-                    <Link to='/home' className="text">
+                    <NavLink exact={true} to='/home'activeClassName="active" className="text">
                         <li>Home</li>
-                    </Link>
-                    <Link to='/create' className="text">
+                    </NavLink>
+                    <NavLink exact={true} to='/create' activeClassName="active" className="text">
                         <li>New Recipe</li>
-                    </Link>
-                    <Link to='/' className="text">
+                    </NavLink>
+                    <NavLink exact={true} to='/' activeClassName="active" className="text">
                         <li>LogOut</li>
-                    </Link>
+                    </NavLink>
                 </div>
 {/*               
  */}            </ul>
