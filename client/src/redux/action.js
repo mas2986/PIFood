@@ -1,5 +1,5 @@
 import axios from 'axios';
-import {SHOW_LOADING,GET_FOOD,GET_COPY_FOOD,GET_DIETS, GET_ID_FOOD,CLEAR_DETAIL,GET_SEARCH_FOOD,ADD_FOOD,ORDER_BY_NAME,ORDER_BY_HSCORE,FILTER_DIETS} from './constantes';
+import {SHOW_LOADING,GET_FOOD,GET_COPY_FOOD,GET_DIETS, GET_ID_FOOD,CLEAR_DETAIL,GET_SEARCH_FOOD,ADD_FOOD,ORDER_BY_NAME,ORDER_BY_HSCORE,FILTER_DIETS,FILTER_ORIGIN,ERROR} from './constantes';
 const URL = 'http://localhost:3001'
 
 export function getFood(){
@@ -40,6 +40,7 @@ export function getIdFood(id){
         try{
             let response = await axios.get(`${URL}/recipes/${id}`);
             dispatch({type:SHOW_LOADING,payload:false})
+            dispatch({type:ERROR,payload:false})
             let idFood = await response.data;
             return dispatch({
                 type: GET_ID_FOOD,
@@ -48,7 +49,7 @@ export function getIdFood(id){
         }
         catch(e){
             dispatch({type:SHOW_LOADING,payload:false})
-            console.log(e.message)
+            dispatch({type:ERROR,payload:true})
         }
     }
 }
@@ -121,6 +122,14 @@ export function filterDiets(value){
         payload: value
     }
 }
+
+/* export function filterOrigin(payload){
+    console.log('ValueAction',payload)
+    return{
+        type:FILTER_ORIGIN,
+        payload
+    }
+} */
 
 export function showLoading(status){
     return{

@@ -1,6 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Bree+Serif&family=EB+Garamond:ital,wght@0,500;1,800&display=swap');
 
 
+.containerSummary{	
+	max-width: 75%;
+	margin: 0 auto;
+}
 /* body {
 background: #DFC2F2;
 	background-image: linear-gradient( to right, #ffffb3,#ffe6e6);
@@ -77,9 +81,7 @@ background: #DFC2F2;
 	width: 50%;
 }
 
-.information{
-	size:2px;
-}
+
 
 #container .product-details > p {
 font-family: 'EB Garamond', serif;
@@ -87,6 +89,10 @@ font-family: 'EB Garamond', serif;
 	font-size: 8px;
 	color: #7d7d7d;
 	
+}
+
+#container .product-details .informationBig{
+	font-size: 16px;
 }
 .control{
 	position: absolute;

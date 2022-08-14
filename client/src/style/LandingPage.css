@@ -22,6 +22,11 @@
   /* background-repeat: no-repeat;  */
 }
 
+body{
+  background-image: url("https://img.freepik.com/premium-vector/food-vector-seamless-pattern-cuisine-fast-food-cafe-wallpaper-with-gastronomy-icons-pink-blush-color-texture-decorative-textile-wrapping-paper-design-bright-background-menu-receipts_106317-9576.jpg");
+  background-repeat: repeat;
+}
+
 .hero button{
   position: relative;
   margin: 0 auto;

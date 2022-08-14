@@ -37,7 +37,7 @@ module.exports = (sequelize) => {
         const rawValue = this.getDataValue('steps');
         return rawValue ? [rawValue] : [];
       }
-    },
+    },    
     dishTypes:{
       type:DataTypes.STRING
     },

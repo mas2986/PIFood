@@ -4,7 +4,7 @@ import LandingPage from './components/LandingPage';
 import Home from './components/Home';
 import Detail from './components/Detail';
 import CreateFood from './components/CreateFood';
-import Footer from './components/Footer'
+import Error from './components/Error';
 import './App.css';
 
 function App() {
@@ -15,7 +15,7 @@ function App() {
       <Route exact path='/home' component={Home}/>
       <Route exact path='/detail/:id' render={(match)=><Detail match={match}/>}/>
       <Route exact path='/create' component={CreateFood}/>
-      {/* <Footer/> */}
+      {/* <Route path='/*' component={Error}/>       */}
     </div>
   );
 }

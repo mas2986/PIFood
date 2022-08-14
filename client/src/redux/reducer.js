@@ -1,10 +1,11 @@
-import {SHOW_LOADING, GET_FOOD,GET_COPY_FOOD,GET_DIETS, GET_ID_FOOD,CLEAR_DETAIL, GET_SEARCH_FOOD,ADD_FOOD,ORDER_BY_NAME,ORDER_BY_HSCORE,FILTER_DIETS} from './constantes';
+import {SHOW_LOADING, GET_FOOD,GET_COPY_FOOD,GET_DIETS, GET_ID_FOOD,CLEAR_DETAIL, GET_SEARCH_FOOD,ADD_FOOD,ORDER_BY_NAME,ORDER_BY_HSCORE,FILTER_DIETS,FILTER_ORIGIN,ERROR} from './constantes';
 const initialState = {
     food:[],
     copyFood:[],
     diets:[],
     searchFood: [],
     idFood:{},
+    error:false,
     showLoading: false
 }
 
@@ -50,7 +51,7 @@ const rootReducer = (state = initialState, action) =>{
                 copyFood: [...state.food,action.payload]               
             }
         case ORDER_BY_NAME:
-            let orderFood = [...state.copyFood];
+            let orderFood = [...state.food];
             orderFood = orderFood.sort(function(a,b){
                 if(a.title>b.title) return 1;
                 if(a.title<b.title) return -1;
@@ -62,7 +63,7 @@ const rootReducer = (state = initialState, action) =>{
                 food: orderFood
             }
         case ORDER_BY_HSCORE:
-            let orderHScore = [...state.copyFood];
+            let orderHScore = [...state.food];
             orderHScore = orderHScore.sort(function(a,b){
                 if(a.healthScore>b.healthScore) return 1;
                 if(a.healthScore<b.healthScore) return -1;
@@ -70,24 +71,31 @@ const rootReducer = (state = initialState, action) =>{
             });
             if (action.payload!='menor') orderHScore = orderHScore.reverse();
             return{
-                ...state,
+                ...state,                
                 food: orderHScore
             }
         case FILTER_DIETS:
-            let filterDiets = [...state.copyFood];
+            let filterDiets = state.copyFood;
+            //let filterDiets = [...state.food]
             if(action.payload!=='allDiets'){
                 filterDiets = filterDiets.filter(el=>el.diets.includes(action.payload));                                
             }
+            // else filterDiets = [...state.copyFood]
             return{
                 ...state,
                 food: filterDiets
             }
+      
         case SHOW_LOADING:
             return{
                 ...state,
                 showLoading: action.payload
             }
-
+        case ERROR:
+        return{
+            ...state,
+            error:action.payload
+        }
         default: return {...state}
     }
 }

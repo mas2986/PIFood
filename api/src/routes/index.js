@@ -7,7 +7,8 @@ const {Recipe, Diet} = require('../db.js');
 const URL = 'https://api.spoonacular.com/recipes'
 const flag = '/complexSearch?addRecipeInformation=true';
 const {apiKey} = process.env;
-//apiKey = 1bd36b11dedd4b2eaeb261378b86aa5f para el ENV
+let dietsComplete = false;
+//apiKey = 5bfe94162e3d4dfcbcc9a43e61f54f17 para el ENV
 //apiKey = dca95ca65ae64b659ca8ead5c32e52b2
 //apiKey = 26b4cc93a1dd452aba27a49817280738
 
@@ -25,13 +26,9 @@ const getRecipeApi = async () =>{
         return{
             id:recipe.id,
             title:recipe.title,
-            //summary:recipe.summary,
             healthScore:recipe.healthScore,
-            //weightWatcherSmartPoints:recipe.weightWatcherSmartPoints,
             image: recipe.image,
-            //dishTypes: recipe.dishTypes,
             diets: recipe.diets,
-            //steps: recipe.analyzedInstructions[0]?.steps
         }
     })
     return recipeApi;
@@ -82,7 +79,6 @@ const getRecipeApiId = async(id)=>{
 
 const getRecipeDbId = async (id)=>{
     try{
-        console.log('DBid',id);
         let recipeId = await Recipe.findByPk(id,{
             include:{
                 model:Diet,
@@ -98,6 +94,26 @@ const getRecipeDbId = async (id)=>{
         return recipeId;
     }
     catch(e){return null}
+}
+
+const setDiets = async ()=>{
+    try{
+        let allRecipe = await getRecipeApi();
+        let diets = allRecipe.map(e=>e.diets).flat();
+        let setDiets = new Set(diets);
+        diets = [...setDiets];
+        diets = diets.filter(Boolean);
+        let promises = diets.map(e=>Diet.findOrCreate({
+            where:{
+                name:e
+            }
+        }))
+        await Promise.all(promises);
+        dietsComplete = true;
+        return diets;
+    }
+    catch(e){return e}
+    
 }
 
 router.get('/recipes',async (req,res,next)=>{
@@ -129,17 +145,7 @@ router.get('/recipes/:id',async (req,res,next)=>{
 
 router.get('/diets',async (req,res,next)=>{
     try{
-        let allRecipe = await getAllRecipe();
-        let diets = allRecipe.map(e=>e.diets).flat();
-        let setDiets = new Set(diets);
-        diets = [...setDiets];
-        diets = diets.filter(Boolean);
-        let promises = diets.map(e=>Diet.findOrCreate({
-            where:{
-                name:e
-            }
-        }))
-        await Promise.all(promises);
+        let diets = await setDiets();                
         return res.status(200).json(diets);
     }
     catch(e){next(e)}
@@ -147,16 +153,18 @@ router.get('/diets',async (req,res,next)=>{
 
 router.post('/recipe',async (req,res,next)=>{
     let {title,diets,summary} = req.body;
+    let dietsDB = [];
     if(!title||!diets||!summary) return res.status(404).send('Faltan datos obligatorios');
     try{
+        if(!dietsComplete) dietsDB = await setDiets();
+        console.log(dietsDB);
         let promises = diets.map(el=>Diet.findOne({where:{name:el}}));
         let idDiets = await Promise.all(promises)
-        let recipe = await Recipe.create(req.body);    
+        let recipe = await Recipe.create(req.body);
         if(recipe) {
             await recipe.addDiets(idDiets);
             //let diet = await Diet.findByPk(idDiets)
             recipe.dataValues.diets = diets//
-            console.log('recipe',recipe);
             //console.log('diet',diet)
         }
         return res.status(201).json(recipe);

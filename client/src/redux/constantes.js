@@ -8,7 +8,9 @@ const ADD_FOOD = 'ADD_FOOD';
 const ORDER_BY_NAME = 'ORDER_BY_NAME';
 const ORDER_BY_HSCORE = 'ORDER_BY_HSCORE';
 const FILTER_DIETS = 'FILTER_DIETS';
+const FILTER_ORIGIN = 'FILTER_ORIGIN';
 const SHOW_LOADING = 'SHOW_LOADING';
+const ERROR = 'ERROR'
 
 module.exports = {
     GET_FOOD,
@@ -21,5 +23,7 @@ module.exports = {
     ORDER_BY_NAME,
     ORDER_BY_HSCORE,
     FILTER_DIETS,
-    SHOW_LOADING
+    FILTER_ORIGIN,
+    SHOW_LOADING,
+    ERROR
 }
