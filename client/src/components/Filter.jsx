@@ -13,12 +13,7 @@ export default function Filter({setCurrentPage,diets}){
         setCurrentPage(1);
     }
 
-    /* const handleFilterOrigin = (e) =>{
-        e.preventDefault();
-        console.log('ValueFilter',e.target.value);
-        dispatch(filterOrigin(e.target.value));
-        setCurrentPage(1);
-    } */
+
     return(
          <div className="content-select">
             <div className="select-box">

@@ -1,18 +1,25 @@
 import React, {useState} from 'react';
 import {useDispatch} from 'react-redux';
-import {NavLink,useHistory} from 'react-router-dom';
+import {NavLink,useLocation} from 'react-router-dom';
 import {getSearchFood,showLoading} from '../redux/action';
 import '../style/NavBar.css'
 
 export default function NavBar({openSideBar}){
-
+    const location = useLocation();
+    console.log('pathnameNav',location.pathname);
 
     return(  
         <nav>
             <ul className="container">
-                <div className="icon" onClick={openSideBar}>
-                    <li><i className="ri-menu-fill"></i></li>                                        
-                </div>                
+                {location.pathname==='/home'||location.pathname==='/search'?                
+                    <div className="icon" onClick={openSideBar}>
+                        <li><i className="ri-menu-fill"></i></li>                                        
+                    </div>  
+                    :
+                    <div>
+                        
+                    </div>
+                }              
                 <div className="container-left">
                     <NavLink exact={true} to='/home'activeClassName="active" className="text">
                         <li>Home</li>

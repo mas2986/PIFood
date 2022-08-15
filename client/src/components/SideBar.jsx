@@ -8,6 +8,7 @@ import '../style/SideBar.css';
 
 export default function SideBar({sideBar,setOrder,setCurrentPage}){
     const [input,setInput] = useState('');
+    
     const diets = useSelector(state=>state.diets);
     const dispatch = useDispatch();
     const history = useHistory();
@@ -16,6 +17,8 @@ export default function SideBar({sideBar,setOrder,setCurrentPage}){
         e.preventDefault();
         setInput(()=>e.target.value);
     }
+
+   
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -44,10 +47,10 @@ export default function SideBar({sideBar,setOrder,setCurrentPage}){
             <li><Order setOrder={setOrder} setCurrentPage={setCurrentPage}/></li>
             <li className="filter"><Filter setCurrentPage={setCurrentPage} diets={diets}/></li>
             <li className="github">
-                <a href="https://github.com/mas2986">
+                <a href="https://github.com/mas2986" target="_blank">
                     <i class="ri-github-fill"></i>            
                 </a>
-                <span>GitHub</span>
+                <span>GitHub</span> 
             </li>
             <li className="linkedIn">
                 <a href="https://www.linkedin.com/in/marcos-alexis-saac-086380248/" target="_blank">

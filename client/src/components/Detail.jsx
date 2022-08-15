@@ -40,7 +40,7 @@ export default function Detail({ match }) {
                 <div className="hint-star star">
                     <h3>Steps</h3>
                 </div>
-                {idFood.steps ? <p className="information">{idFood.steps && idFood.steps.map(e => e)}</p> : <p className="informationBig">Sin datos sobre steps</p>}
+                {idFood.steps ? <p className={idFood.steps.join()<100?"informationBig":null}>{idFood.steps && idFood.steps.map(e => e)}</p> : <p className="informationBig">Sin datos sobre steps</p>}
                 <div className="control">
                     <button className="btn">
                         <span>HSCORE</span>
@@ -53,11 +53,11 @@ export default function Detail({ match }) {
                 <div className="info">
                     <h2> DIETS</h2>
                     <ul>
-                        {idFood.diets && idFood.diets.map((e, i) => <li><strong>Diets {i + 1} : </strong>{e} </li>)}                        
+                        {idFood.diets ? idFood.diets.map((e, i) => <li><strong>Diets {i + 1} : </strong>{e} </li>):<li><strong>No especificado</strong></li>}                        
                     </ul>
                     <h2>DISHTYPES</h2>
                     <ul>
-                        {idFood.dishTypes && idFood.dishTypes.map((e, i) => <li><strong>DishTypes {i + 1} : </strong>{e} </li>)}                  
+                        {idFood.dishTypes ? idFood.dishTypes.map((e, i) => <li><strong>DishTypes {i + 1} : </strong>{e} </li>):<li><strong>No especificado</strong></li>}                  
                     </ul>                                    
                 </div>
             </div>
@@ -65,6 +65,7 @@ export default function Detail({ match }) {
         <div className="containerSummary">
             <h2>SUMMARY</h2>
             <p>{idFood.summary&&idFood.summary.replace(/<[^>]+>/g,"")}</p>
+            <br/>
         </div>
         <div className="containerSelect">
             <Link to="/home">
@@ -76,6 +77,7 @@ export default function Detail({ match }) {
                 </button>
             </Link>
         </div>
+        <br/>
         </>
         }
         </>

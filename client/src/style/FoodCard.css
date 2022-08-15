@@ -60,9 +60,10 @@ figure figcaption {
 		transition: 0.25s;
 }
 
-figure figcaption	h3 {
+figure figcaption h3 {
 			margin: 0 0 20px;
 			padding: 0;
+			font-family: 'Ubuntu'
 		}
 
 figure figcaption div{

@@ -15,6 +15,7 @@ function App() {
       <Route exact path='/home' component={Home}/>
       <Route exact path='/detail/:id' render={(match)=><Detail match={match}/>}/>
       <Route exact path='/create' component={CreateFood}/>
+      {/* <Route exact path='edit/:id' render={(match)=><CreateFood match={match}/>}/> */}
       {/* <Route path='/*' component={Error}/>       */}
     </div>
   );

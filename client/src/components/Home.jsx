@@ -45,7 +45,6 @@ export default function Home(){
             dispatch(showLoading(true))
         };
         if(location.pathname==='/search'){
-            console.log(location)
             dispatch(getSearchFood(location.search.split('=')[1]))
             setSearch(()=>true)
             dispatch(showLoading(true));
@@ -54,44 +53,43 @@ export default function Home(){
             dispatch(getDiets())
         }
         return()=>{
-            console.log('Despachando GET Copy')
             dispatch(getCopyFood())
             };
     },[dispatch])
 
     return(
         <>
-        {console.log('Home',foods)}
+        
         <NavBar openSideBar={handleSideBar}/>
         <SideBar sideBar={sideBar} setOrder={setOrder} setCurrentPage={setCurrentPage}/>
         <div className={s.container}>
+            {loading?<Loading/>: 
+            <>
             <Paginado 
                 food={lengthFood}
                 setCurrentPage={setCurrentPage}
                 currentPage = {currentPage}
                 foodPerPage={foodPerPage}
             />
-            {/* <div className={s.containerSelect}>
-                <Order setOrder={setOrder} setCurrentPage={setCurrentPage}/>
-                <Filter setCurrentPage={setCurrentPage} diets={diets}/>
-            </div> */}
-            {loading&&<Loading/>} 
+            
             <div className={s.containerSelect}>
                 {search&&!loading?<h4>{lengthFood} Resultados para tu búsqueda</h4>: null}
             </div>
             <div className={s.containerFood}>
-                {currentFood.length&&currentFood.map(el=>
+                {currentFood.length?currentFood.map(el=>
                     <FoodCard
                         key={el.id}
                         id = {el.id}
                         title = {el.title}
                         image = {el.image}                    
                         diets = {el.diets}
-                    />)}
+                    />):null}
             </div>
             <div className={s.containerSelect}>
                 {search?<button className={s.btnHome} onClick={searchToHome}>GO TO HOME</button>:null}
-            </div>            
+            </div>  
+            </>  
+            }        
         </div>  
         </>              
     )

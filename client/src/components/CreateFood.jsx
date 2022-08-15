@@ -8,7 +8,6 @@ import '../style/CreateFood.css';
 
 function validate(input){
     let errors = {}
-    console.log('input',input);    
     if(input.title==='') errors.title = 'Este campo es obligatorio';
     //else if(/^([a-zA-Z]+)(\s[a-zA-Z]+)*$/.test(input.title)) errors.title = 'Este campo no acepta números';
     if(input.summary==='') errors.summary = 'Este campo es obligatorio';
@@ -46,11 +45,15 @@ export default function CreateFood(){
         setErrors(()=>errorsValidate);
     }
 
-    const handleSelect = (e) =>{        
+    const handleSelect = (e) =>{  
+        let errorsValidate = validate({...input,diets:[...input.diets,e.target.value]})
+        let setDiets = new Set([...input.diets,e.target.value]);
+        let diets = [...setDiets];
         setInput({
             ...input,
-            diets:[...input.diets,e.target.value]
-        })
+            diets:diets
+        })         
+        setErrors(()=>errorsValidate);
     }
 
     const deleteDiets = (e)=>{

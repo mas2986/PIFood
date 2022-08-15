@@ -38,11 +38,11 @@ background: #DFC2F2;
 	padding: 30px;
 	height: 100%;
 	float: left;
-	width: 40%;
+	width: 50%;
 
 }
 
-#container .product-details h1{
+#container .product-details h1,.containerSummary h2{
 	font-family: 'Bebas Neue', cursive;
 	display: inline-block;
 	position: relative;
@@ -83,12 +83,16 @@ background: #DFC2F2;
 
 
 
-#container .product-details > p {
+#container .product-details > p,.containerSummary p {
 font-family: 'EB Garamond', serif;
 	text-align: center;
-	font-size: 8px;
-	color: #7d7d7d;
-	
+	font-size: 9px;
+	color: #7d7d7d;	
+}
+
+.containerSummary p{
+	color: black;
+	font-size: 16px;
 }
 
 #container .product-details .informationBig{
@@ -96,8 +100,8 @@ font-family: 'EB Garamond', serif;
 }
 .control{
 	position: absolute;
-	bottom: 20%;
-	left: 22.8%;
+	bottom: 5%;
+	left: 35%;
 	
 }
 .btn {

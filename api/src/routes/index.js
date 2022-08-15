@@ -8,9 +8,9 @@ const URL = 'https://api.spoonacular.com/recipes'
 const flag = '/complexSearch?addRecipeInformation=true';
 const {apiKey} = process.env;
 let dietsComplete = false;
-//apiKey = 5bfe94162e3d4dfcbcc9a43e61f54f17 para el ENV
-//apiKey = dca95ca65ae64b659ca8ead5c32e52b2
+//apiKey =  para el ENV
 //apiKey = 26b4cc93a1dd452aba27a49817280738
+//apiKey = 1bd36b11dedd4b2eaeb261378b86aa5f
 
 
 
@@ -90,7 +90,7 @@ const getRecipeDbId = async (id)=>{
         })        
         recipeId = recipeId.toJSON();
         recipeId.diets = recipeId.diets.map(el=>el.name);
-        console.log('recipeId',recipeId)
+        // console.log('recipeId',recipeId)
         return recipeId;
     }
     catch(e){return null}
@@ -157,7 +157,6 @@ router.post('/recipe',async (req,res,next)=>{
     if(!title||!diets||!summary) return res.status(404).send('Faltan datos obligatorios');
     try{
         if(!dietsComplete) dietsDB = await setDiets();
-        console.log(dietsDB);
         let promises = diets.map(el=>Diet.findOne({where:{name:el}}));
         let idDiets = await Promise.all(promises)
         let recipe = await Recipe.create(req.body);
@@ -170,6 +169,18 @@ router.post('/recipe',async (req,res,next)=>{
         return res.status(201).json(recipe);
     }    
     catch(e){next(e)}
+})
+
+router.put('/recipe',async (req,res,next)=>{
+    let { id } = req.body;
+    try{
+        let recipeDb = await Recipe.findByPk(id);
+        if(!recipeDb) return res.status(404).send('No se encontró la receta a modificar');
+        await recipeDb.update(req.body);
+        res.status(200).json(recipeDb);
+    }
+    catch(e){next(e)}
+
 })
 
 module.exports = router;
