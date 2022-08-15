@@ -2,7 +2,7 @@ import React,{useState,useEffect} from 'react';
 import NavBar from './NavBar';
 import {useDispatch,useSelector} from 'react-redux';
 import {getDiets,addRecipe} from '../redux/action';
-import {useHistory} from 'react-router-dom';
+import {useHistory,useLocation,useParams} from 'react-router-dom';
 import '../style/CreateFood.css';
 
 
@@ -22,7 +22,6 @@ export default function CreateFood(){
     const dispatch = useDispatch();
     const history = useHistory();
     const diets = useSelector(state=>state.diets);
-    
     const [errors, setErrors] = useState({})
     const [input, setInput] = useState({
         title:'',
@@ -33,7 +32,8 @@ export default function CreateFood(){
     })
 
     useEffect(()=>{
-        if(diets.length===0) dispatch(getDiets())
+        if(diets.length===0) dispatch(getDiets());
+       
     },[])
 
     const handleInput = (e) =>{
@@ -69,10 +69,9 @@ export default function CreateFood(){
         e.preventDefault();
         if(!input.title||!input.summary||input.diets.length===0) return alert('Complete los datos obligatorios');
         let body = input;
-        console.log(body);
         body.healthScore = parseInt(input.healthScore);
-        console.log(typeof body.healthScore);
         dispatch(addRecipe(body));
+        //despachar la accion al reducer sobre la info actualizada
         history.push('/home')
     }
 
@@ -91,7 +90,7 @@ export default function CreateFood(){
             <label>Title </label>
             <input type="text"
                 name = "title"
-                className="title"
+                className={errors.title?"danger":"title"}
                 value={input.title}
                 // placeholder = 'Ingrese el nombre de su receta'
                 onChange = {handleInput}
@@ -102,7 +101,7 @@ export default function CreateFood(){
             <label>Summary</label>
             <input type="textarea"
                 name="summary"
-                className="textarea"
+                className={errors.summary?"danger":"textarea"}
                 value={input.summary} 
                 // placeholder = 'Escribe un breve resumen de su plato'   
                 onChange = {handleInput}
@@ -124,7 +123,7 @@ export default function CreateFood(){
             <label>HealthScore</label>
             <input type="number" 
                 name="healthScore"
-                className="healthScore"
+                className={errors.healthScore?"danger":"healthScore"}
                 value={input.healthScore}
                 // placeholder='Nivel de comida saludable de su plato'
                 onChange = {handleInput}

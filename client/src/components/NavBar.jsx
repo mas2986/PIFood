@@ -6,7 +6,6 @@ import '../style/NavBar.css'
 
 export default function NavBar({openSideBar}){
     const location = useLocation();
-    console.log('pathnameNav',location.pathname);
 
     return(  
         <nav>

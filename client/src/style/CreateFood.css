@@ -237,7 +237,10 @@
 form div .danger{
     color:red;
     font-size:12px;
-    text-align: center;
+    text-align: center;    
+}
+.form-group input.danger {
+    border: 2px solid red;
 }
 form div ul li{
     display:flex;

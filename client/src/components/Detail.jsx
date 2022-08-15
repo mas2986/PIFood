@@ -40,7 +40,7 @@ export default function Detail({ match }) {
                 <div className="hint-star star">
                     <h3>Steps</h3>
                 </div>
-                {idFood.steps ? <p className={idFood.steps.join()<100?"informationBig":null}>{idFood.steps && idFood.steps.map(e => e)}</p> : <p className="informationBig">Sin datos sobre steps</p>}
+                {idFood.steps ? <p className={idFood.steps.join().length<600?"informationBig":null}>{idFood.steps && idFood.steps.map(e => e)}</p> : <p className="informationBig">Sin datos sobre steps</p>}
                 <div className="control">
                     <button className="btn">
                         <span>HSCORE</span>
@@ -70,8 +70,8 @@ export default function Detail({ match }) {
         <div className="containerSelect">
             <Link to="/home">
             <button className="btnHome">
-                    <span class="label">Go to HOME</span>
-                    <span class="icon">
+                    <span className="label">Go to HOME</span>
+                    <span className="icon">
                         <i class="ri-arrow-right-line"></i>
                     </span>
                 </button>

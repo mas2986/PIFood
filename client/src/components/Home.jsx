@@ -86,7 +86,14 @@ export default function Home(){
                     />):null}
             </div>
             <div className={s.containerSelect}>
-                {search?<button className={s.btnHome} onClick={searchToHome}>GO TO HOME</button>:null}
+                {search?                
+                    <button onClick={searchToHome} className={s.btnHome}>
+                        <span className={s.label}>Go to HOME</span>
+                        <span className={s.icon}>
+                            <i class="ri-arrow-right-line"></i>
+                        </span>
+                    </button>
+                :null}
             </div>  
             </>  
             }        
