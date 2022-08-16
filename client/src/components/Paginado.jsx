@@ -10,7 +10,7 @@ export default function Paginate({currentPage, foodPerPage, food, setCurrentPage
     if(rightSide>maxPages) rightSide = maxPages;
     for (let number = leftSide ; number <= rightSide; number++) {
       items.push(
-        <div key={number} className={(number === currentPage ? 'round-effect active' : 'round-effect')} onClick={()=>{ setCurrentPage(number)}}>
+        <div key={number} className={(number === currentPage ? 'round-effect active' : 'round-effect')} onClick={()=>{setCurrentPage(number)}}>
           {number}
         </div>,
       );

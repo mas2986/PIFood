@@ -19,7 +19,6 @@ export default function Detail({ match }) {
 
 
     useEffect(() => {
-        console.log('Mi id es' + id);
         if (id){
             dispatch(getIdFood(id));
             dispatch(showLoading(true));
