@@ -41,7 +41,8 @@ const rootReducer = (state = initialState, action) =>{
             console.log(action.payload);
             return{
                 ...state,
-                food: action.payload
+                food: action.payload,
+                search:action.payload
             }
         case ADD_FOOD:
             console.log('Añadiendo receta');
@@ -69,18 +70,18 @@ const rootReducer = (state = initialState, action) =>{
                 if(a.healthScore<b.healthScore) return -1;
                 return 0;
             });
-            if (action.payload!='menor') orderHScore = orderHScore.reverse();
+            if (action.payload!=='menor') orderHScore = orderHScore.reverse();
             return{
                 ...state,                
                 food: orderHScore
             }
         case FILTER_DIETS:
-            let filterDiets = state.copyFood;
+            let filterDiets = action.payload.path==='/home'?state.copyFood:state.search;
             //let filterDiets = [...state.food]
-            if(action.payload!=='allDiets'){
-                filterDiets = filterDiets.filter(el=>el.diets.includes(action.payload));                                
+            console.log('PayloadDiets',action.payload)
+            if(action.payload.value!=='allDiets'){
+                filterDiets = filterDiets.filter(el=>el.diets.includes(action.payload.value));                                
             }
-            // else filterDiets = [...state.copyFood]
             return{
                 ...state,
                 food: filterDiets

@@ -116,11 +116,11 @@ export function orderHScore(value){
     }
 }
 
-export function filterDiets(value){
+export function filterDiets(value,path){
     alert('Filtrado exitoso')
     return{
         type: FILTER_DIETS,
-        payload: value
+        payload: {value,path}
     }
 }
 

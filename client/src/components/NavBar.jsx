@@ -30,8 +30,7 @@ export default function NavBar({openSideBar}){
                         <li>LogOut</li>
                     </NavLink>
                 </div>
-{/*               
- */}            </ul>
+            </ul>
         </nav>
 
     )

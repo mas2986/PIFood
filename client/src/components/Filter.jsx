@@ -1,15 +1,20 @@
 import React,{useEffect} from 'react';
-import {useDispatch} from 'react-redux';
+import {useDispatch,useSelector} from 'react-redux';
 import {filterDiets} from '../redux/action';
+import {useLocation} from 'react-router-dom';
 //import {filterOrigin} from '../redux/action';
 import '../style/Select.css'
 
-export default function Filter({setCurrentPage,diets}){
+export default function Filter({setCurrentPage}){
     const dispatch = useDispatch();
+    const diets = useSelector(state=>state.diets);
+    const location = useLocation();
 
     const handleFilterDiets = (e) => {
         e.preventDefault();
-        dispatch(filterDiets(e.target.value));
+        let path = location.pathname;
+        console.log('path',path);
+        dispatch(filterDiets(e.target.value,path));
         setCurrentPage(1);
     }
 

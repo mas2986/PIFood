@@ -4,8 +4,6 @@ import {useLocation, useHistory} from 'react-router-dom';
 import {getFood,getDiets,getSearchFood,showLoading,getCopyFood} from '../redux/action';
 import FoodCard from './FoodCard';
 import Paginado from './Paginado';
-import Order from './Order';
-import Filter from './Filter';
 import Loading from './Loading';
 import NavBar from './NavBar';
 import SideBar from './SideBar';
