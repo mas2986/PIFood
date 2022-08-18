@@ -25,7 +25,7 @@ export default function SideBar({sideBar,setOrder,setCurrentPage}){
         if(input!=='') {
             dispatch(getSearchFood(input));
             history.push(`/search?title=${input}`);
-            setInput('');
+            setInput('');            
             dispatch(showLoading(true));
         }
         else alert('Ingrese un nombre para realizar la búsqueda');

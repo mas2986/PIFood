@@ -56,7 +56,7 @@ export default function Detail({ match }) {
                     </ul>
                     <h2>DISHTYPES</h2>
                     <ul>
-                        {idFood.dishTypes ? idFood.dishTypes.map((e, i) => <li><strong>DishTypes {i + 1} : </strong>{e} </li>):<li><strong>No especificado</strong></li>}                  
+                        {idFood.dishTypes?.length ? idFood.dishTypes.map((e, i) => <li><strong>DishTypes {i + 1} : </strong>{e} </li>):<li><strong>No especificado</strong></li>}                  
                     </ul>                                    
                 </div>
             </div>

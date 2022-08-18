@@ -10,6 +10,7 @@ export default function Order({setOrder,setCurrentPage}){
         e.preventDefault();
         dispatch(orderName(e.target.value));
         setCurrentPage(1);
+        console.log('Segun Title')
         setOrder(`Ordenado ${e.target.value}`);
     }
 
@@ -17,6 +18,7 @@ export default function Order({setOrder,setCurrentPage}){
         e.preventDefault();
         dispatch(orderHScore(e.target.value));
         setCurrentPage(1);
+        console.log('Segun HealthScore');
         setOrder(`Ordenado ${e.target.value}`)
     }
 

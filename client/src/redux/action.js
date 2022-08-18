@@ -25,7 +25,6 @@ export function getDiets(){
         try{
             let response = await axios.get(`${URL}/diets`);
             let diets = response.data;
-            console.log('diets',diets)
             return dispatch({
                 type: GET_DIETS,
                 payload: diets

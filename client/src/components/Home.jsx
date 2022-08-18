@@ -10,8 +10,7 @@ import SideBar from './SideBar';
 import s from '../style/Home.module.css'
 
 export default function Home(){
-    let foods = useSelector(state=>state.food);
-    let searchFood = useSelector(state=>state.searchFood);
+    let foods = useSelector(state=>state.food);        
     const diets = useSelector(state=>state.diets);
     const loading = useSelector(state=>state.showLoading);
     const dispatch = useDispatch();
@@ -57,7 +56,6 @@ export default function Home(){
 
     return(
         <>
-        
         <NavBar openSideBar={handleSideBar}/>
         <SideBar sideBar={sideBar} setOrder={setOrder} setCurrentPage={setCurrentPage}/>
         <div className={s.container}>

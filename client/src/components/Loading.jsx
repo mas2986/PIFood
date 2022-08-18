@@ -1,6 +1,4 @@
 import React from 'react';
-import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
-import {Circles} from 'react-loader-spinner';
 import '../style/Loading.css'
 
 export default function Loading(){

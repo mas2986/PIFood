@@ -21,6 +21,12 @@
   font-family: 'Ubuntu',sans-serif;
   /* color:white; */
 }
+@media (max-width: 600px) {
+  .container li {
+    margin: 0.2rem;
+    font-size: 0.9rem;
+  }
+}
 
 .ri-menu-fill{
   color:white;

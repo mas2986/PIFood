@@ -40,7 +40,7 @@ module.exports = (sequelize) => {
     },    
     dishTypes:{
       type:DataTypes.STRING
-    },
+    },    
     createdDB:{
       type:DataTypes.BOOLEAN,
       allowNull:true,

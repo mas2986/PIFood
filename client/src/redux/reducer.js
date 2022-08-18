@@ -33,9 +33,10 @@ const rootReducer = (state = initialState, action) =>{
                 diets:[...action.payload]
             }
         case GET_ID_FOOD:
+        console.log('Idfodd',action.payload)
             return{
                 ...state,
-                idFood: action.payload
+                idFood:action.payload
             }
         case GET_SEARCH_FOOD:
             console.log(action.payload);
@@ -59,6 +60,7 @@ const rootReducer = (state = initialState, action) =>{
                 return 0;
             })
             if(action.payload !== 'AZ') orderFood = orderFood.reverse();            
+            console.log('Segun Title',orderFood);
             return{
                 ...state,
                 food: orderFood
@@ -68,7 +70,11 @@ const rootReducer = (state = initialState, action) =>{
             orderHScore = orderHScore.sort(function(a,b){
                 if(a.healthScore>b.healthScore) return 1;
                 if(a.healthScore<b.healthScore) return -1;
-                return 0;
+                if(a.healthScore===b.healthScore) {
+                    if(a.title>b.title) return 1;
+                    if(a.title<b.title) return -1
+                    return 0;
+                }
             });
             if (action.payload!=='menor') orderHScore = orderHScore.reverse();
             return{
@@ -78,7 +84,6 @@ const rootReducer = (state = initialState, action) =>{
         case FILTER_DIETS:
             let filterDiets = action.payload.path==='/home'?state.copyFood:state.search;
             //let filterDiets = [...state.food]
-            console.log('PayloadDiets',action.payload)
             if(action.payload.value!=='allDiets'){
                 filterDiets = filterDiets.filter(el=>el.diets.includes(action.payload.value));                                
             }
